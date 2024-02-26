@@ -1,0 +1,53 @@
+@use "./colors";
+@use "./utility";
+
+html,
+body {
+  color: colors.$color_gray_4;
+  font-family: "Gill Sans MT", sans-serif;
+  font-weight: normal;
+  text-rendering: geometricPrecision;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: normal;
+}
+
+$font-base-size: 1.5vw;
+
+h1 {
+  @include utility.bpProp('font-size', 13vw);
+}
+h2 {
+  @include utility.bpProp('font-size', 11vw);
+}
+h3 {
+  @include utility.bpProp('font-size', 9vw);
+}
+h4 {
+  @include utility.bpProp('font-size', 7vw);
+}
+h5 {
+  @include utility.bpProp('font-size', 5vw);
+}
+p, a, button, ul, ol {
+  @include utility.bpProp('font-size', 5vw);
+}
+
+
+.page-title {
+  font-family: "Righteous", sans-serif;
+}
+.supplement {
+  font-family: "Agency FB";
+}
+
+button,
+a {
+  font-family: "Agency FB", sans-serif;
+  font-weight: normal;
+}

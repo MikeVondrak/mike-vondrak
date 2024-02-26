@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mike Vondrak</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <!-- adapted from https://www.bennadel.com/blog/3147-creating-an-event-driven-pre-bootstrap-loading-screen-in-angular-2-0-0.htm -->
+    <!-- pre-bootstap-container will be removed after app has loaded and 'appReady' event has fired from app.component ngAfterViewInit -->
+    <div id="pre-bootstrap-container">
+      <script type="text/javascript">
+        // listen for the "appready" event emitted by the application
+        document.addEventListener("appReady", handleAppReady);
+
+        console.groupEnd();
+        console.group("Index.html");
+        console.log("appReady event listener added");
+
+        // on appready event unload the pre-bootstrap element
+        function handleAppReady(event) {
+          console.groupEnd();
+          console.group("Index.html");
+          console.log("handleAppReady()");
+
+          var preBootstrapContainer = document.getElementById(
+            "pre-bootstrap-container"
+          );
+          var preBootstrap = document.getElementById("pre-bootstrap");
+
+          // add the class-name to initiate the css transitions
+          preBootstrap.className = "loaded";
+
+          // remove the bootstrap container after the transition has completed based on the time from CSS animation (transition-delay + transition from #pre-bootstrap)
+          setTimeout(function removeLoadingScreen() {
+            preBootstrapContainer?.parentNode?.removeChild(
+              preBootstrapContainer
+            );
+          }, 2000);
+        }
+      </script>
+      <!-- inline styles so pre-bootstrap is styled on load -->
+      <style type="text/css">
+        body {
+          --fadeDelayTime: 250ms;
+          --fadeTransitionTime: 250ms;
+          --colorBackground: #001212;
+        }
+        body #pre-bootstrap {
+          position: fixed;
+          top: 0px;
+          right: 0px;
+          bottom: 0px;
+          left: 0px;
+          background-color: var(--colorBackground);
+          opacity: 1;
+          -webkit-transition: opacity ease-in var(--fadeTransitionTime); /* transition + transition-delay needs to equal setTimeout value above */
+          -moz-transition: opacity ease-in var(--fadeTransitionTime);
+          -o-transition: opacity ease-in var(--fadeTransitionTime);
+          transition: opacity ease-in var(--fadeTransitionTime);
+          -webkit-transition-delay: var(--fadeDelayTime);
+          -moz-transition-delay: var(--fadeDelayTime);
+          -o-transition-delay: var(--fadeDelayTime);
+          transition-delay: var(--fadeDelayTime);
+          z-index: 999;
+        }
+        body #pre-bootstrap.loaded {
+          opacity: 0;
+        }
+        body #pre-bootstrap > div {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          opacity: 1;
+          -webkit-transition: opacity ease-in var(--fadeTransitionTime);
+          -moz-transition: opacity ease-in var(--fadeTransitionTime);
+          -o-transition: opacity ease-in var(--fadeTransitionTime);
+          transition: opacity ease-in var(--fadeTransitionTime); /* should equal transition-delay for #pre-bootstrap */
+        }
+        body #pre-bootstrap.loaded > div {
+          opacity: 0;
+        }
+        body #pre-bootstrap > div h1 {
+          position: relative;
+          top: 50%;
+          /*margin-top: -1em;*/
+          margin: 0;
+          -webkit-transform: translateY(-100%);
+          -moz-transform: translateY(-100%);
+          -o-transform: translateY(-100%);
+          transform: translateY(-100%);
+          text-align: center;
+          color: var(--colorBackground);
+          font-size: 4em;
+          font-weight: 100;
+          letter-spacing: 3px;
+          text-shadow: 2px 2px #444, -1px -1px #fff, 1px 1px #fff;
+          font-family: 'Courier New', Courier, monospace;
+
+        }
+
+        @media screen and (max-width: 500px) {
+          body #pre-bootstrap > div h1 {
+            font-size: 2em;
+          }
+        }
+      </style>
+
+      <div id="pre-bootstrap">
+        <div>
+          <h1>loading...</h1>
+
+          <!--<p style="color: #888; text-align: center;">Simulating app load time of 2s</p>-->
+        </div>
+      </div>
+    </div>
+    <!-- end pre-bootstrap-container -->
+    <app-root></app-root>
+  </body>
+</html>

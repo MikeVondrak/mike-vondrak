@@ -1,0 +1,33 @@
+@use "../scss/colors";
+@use "../scss/utility";
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: colors.$color_black;
+}
+
+body {
+  color: colors.$color_gray_4;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+  }
+
+  a {
+    color: colors.$color_cta;
+    border-bottom: 1px solid rgba(colors.$color_cta, 0);
+    text-decoration: none;
+    transition: border 0.4s;
+    &:hover {
+      border-bottom: 1px solid rgba(colors.$color_cta, 1);
+    }
+    
+  }
+}

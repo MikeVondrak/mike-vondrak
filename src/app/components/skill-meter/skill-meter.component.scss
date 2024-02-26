@@ -1,0 +1,74 @@
+@use '../../scss/lib';
+
+.skill-meter-container {
+  position: relative;
+  //width: 14vw;
+  padding: 2vw 3vw;
+  @include lib.media-breakpoint-gte(md) {
+    padding: 1vw 2vw;
+  }
+  @include lib.media-breakpoint-gte(hd) {
+    padding: 0.5vw 1.5vw;
+  }
+
+  border-radius: 0 2vw 50% 50%;
+  background-color: lib.$color_gray_3;
+
+  .contact-info-container {
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1vw;
+  } 
+  .skill-meter-dial-container {
+    z-index: 0;
+    display: flex; 
+    justify-content: center;
+    
+    top: 4vw;
+    right: 0vw;
+    //height: 14vw;
+    //width: 14vw;
+    //padding: 0.5vw;
+    //border-radius: 0 0 50% 50%;
+    //background-color: lib.$color_gray_3;
+
+
+    .skill-meter-dial {
+      width: 60vw;
+      height: 60vw;
+      @include lib.media-breakpoint-gte(sm) {
+        width: 32vw;
+        height: 32vw;
+      }
+      @include lib.media-breakpoint-gte(md) {
+        width: 28vw;
+        height: 28vw;
+      }
+      @include lib.media-breakpoint-gte(lg) {
+        width: 24vw;
+        height: 24vw;
+      }
+      @include lib.media-breakpoint-gte(ws) {
+        width: 20vw;
+        height: 20vw;
+      }
+      @include lib.media-breakpoint-gte(hd) {
+        width: 18vw;
+        height: 18vw;
+      }
+      @include lib.media-breakpoint-gte('2k') {
+        width: 12vw;
+        height: 12vw;
+      }
+      @include lib.media-breakpoint-gte('4k') {
+        width: 10vw;
+        height: 10vw;
+      }
+      background-color: red;
+      border-radius: 50%;
+    }
+  }
+}

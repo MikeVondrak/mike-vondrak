@@ -1,0 +1,405 @@
+  @use './colors';
+@use 'sass:math';
+@use 'sass:map';
+@forward 'sass:math';
+@forward 'sass:map';
+
+// Widths for responsive design
+$breakpoints: (
+  'zero': 0,
+  'min': 320,
+  'xs': 440,
+  'sm': 600,
+  'md': 840,
+  'lg': 1024,
+  'xl': 1280,
+  'ws': 1440,
+  'hd': 1920,
+  '2k': 2560,
+  '4k': 3840,
+);
+$scalars: (
+  'zero': 1, 
+  'min': 0.96, 
+  'xs': 0.86, 
+  'sm': 0.78, 
+  'md': 0.66, 
+  'lg': 0.56, 
+  'xl': 0.48, 
+  'ws': 0.40, 
+  'hd': 0.32, 
+  '2k': 0.26,
+  '4k': 0.22
+  );
+
+@mixin media-breakpoint-gte($bp) {  
+  $bpVal: map-get($breakpoints, $bp) + 'px';
+  @media (min-width: $bpVal) {
+    @content;
+  }
+}
+
+@mixin is-portrait() {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin fontFace($name, $file, $folder, $fullName, $postscriptName, $svgId, $style: normal, $weight: 400) {
+  $basePath: '/assets/fonts/';
+  @font-face {
+    font-family: $name;
+    font-style: $style;
+    font-weight: $weight;
+    src: url($basePath + $file + '.eot'); /* IE9 Compat Modes */
+    src: 
+      local($fullName) /* use font from user's system if installed */
+      local($postscriptName),  /* local Postscript for OS X + Safari */
+      url($basePath + $file + '.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url($basePath + $file + '.woff2') format('woff2'), /* Super Modern Browsers */
+      url($basePath + $file + '.woff') format('woff'), /* Modern Browsers */
+      url($basePath + $file + '.ttf') format('truetype'), /* Safari, Android, iOS */
+      url($basePath + $file + '.svg#' + svgId) format('svg'); /* Legacy iOS */
+  }
+}
+//
+// Create a scaled property based on initial value
+//
+@mixin bpProp($property, $initialValue) {
+  $sizeMap: mapCreate($initialValue);
+  @include breakpointProp($property, $sizeMap);
+}
+//
+// Create a map of scaled values for each breakpoint
+//
+@function mapCreate($zeroValue) {
+  $newMap: ();
+  @each $bp, $val in $breakpoints {
+    $scaledVal: $zeroValue * map.get($scalars, $bp);
+    $newMap: map.set($newMap, $bp, $scaledVal);
+  }
+  @return $newMap;
+}
+//
+// Generate a new map with each value modified by scalar
+//
+@function mapApplyScalar($scalar, $map) {
+  $mapped: ();
+  @each $key, $val in $map {
+    $mappedVal: $val * $scalar;
+    $mapped: map.set($mapped, $key, $mappedVal);
+  }
+  @return ($mapped);
+}
+
+//
+// Wrap the values of a map with $modifier and parentheses
+// - e.g. "translateZ" -> "translateZ(<val>)"
+//,
+@function mapWrapValues($modifier, $map) {
+  $mapped: ();
+  @each $key, $val in $map {
+    $mappedVal: "#{$modifier}(#{$val})";
+    //@warn "5 ### " + $mappedVal;
+    $mapped: map.set($mapped, $key, $mappedVal);
+  }
+  //@warn "4 ### " + inspect($mapped);
+  @return ($mapped);
+}
+
+//
+// Generates a set of media-queries for the provided property and list of values based on $breakpoints array
+//
+@mixin breakpointProp($prop, $valuesList) {
+  // Default to min value
+  #{$prop}: #{map.get($map: $valuesList, $key: "zero")};
+  // For each provided bp generate a value for prop in respective media query
+  @each $key, $val in $valuesList {
+    @if $key != 'zero' {
+      @include media-breakpoint-gte($key) {
+        #{$prop}: #{$val};
+      }
+    }
+  }
+}
+
+//
+// Generates a set of media-queries for the provided property and list of values based on $breakpoints array
+// - Expected format:
+//   map: (
+//     <property>: (
+//       <breakpoint>: <value>
+//
+@mixin breakpointProps($propsMap) {
+  // To avoid repeated media-queries for each prop, build a map of properties at each bp
+  $mediaQueryMap: ();
+  // Loop all breakpoints and add any props with value at bp
+  @each $bp in $breakpoints {
+    // list of props in current bp
+    $bpProps: ();
+    // bp key text, e.g. "xs"
+    $bpKey: nth(
+      $list: $bp,
+      $n: 1,
+    );
+    // Loop all provided props and add value if one exists for bp
+    @each $prop, $valueLists in $propsMap {
+      @if map.has-key($valueLists, $bpKey) {
+        $valueAtBp: map.get($valueLists, $bpKey);
+        $bpProps: map.set($bpProps, $prop, $valueAtBp);
+      }
+    }
+    $mediaQueryMap: map.set($mediaQueryMap, $bpKey, $bpProps);
+  }
+
+  @each $breakpoint, $propsList in $mediaQueryMap {
+    //
+    // TODO: defaut value w/o media-query?
+    //
+    @include media-breakpoint-gte($breakpoint) {
+      @each $property, $value in $propsList {
+        #{$property}: #{$value};
+      }
+    }
+  }
+}
+
+//
+// Generate a set of properties for orientations and breakpoints
+//
+@mixin orientationBpProp($property, $orientations) {
+  @each $orientation, $breakpointList in $orientations {
+    //
+    // TODO: defaut value w/o media-query?
+    //
+    @media screen and (orientation: #{$orientation}) {
+      @each $breakpoint, $valuesList in $breakpointList {
+        @include media-breakpoint-gte($breakpoint) {
+          @each $value in $valuesList {
+            #{$property}: #{$value};
+          }
+        }
+      }
+    }
+  }
+}
+
+//
+// Generate an orientation-breakpoint media-query set from each property in $map
+//  Expected format:
+//    (property)
+//      (orientation)
+//        (breakpoint | value)
+//
+@mixin orientationBpProps($map) {
+  // for each property, check for orientation values and create a set of media queries for breakpoints
+  @each $property, $orientations in $map {
+    @include orientationBpProp($property, $orientations);
+  }
+}
+
+//
+// Loop over each orientation's breakpoint value map
+// - NOTE: Must include "using ($bp,$val)" at the end of the mixin call
+//
+@mixin orientationBpEach($map) {
+  @each $orientation, $map in $map {
+    @each $bp, $val in $map {
+      @content ($bp, $val);
+    }
+  }
+}
+
+//
+// Apply a scalar to a nested portrait/landscape breakpoint map
+//
+@function getScaledOrientationBpMap($scalar, $map) {
+  @if not map.has-key($map, $portraitKey) {
+    @error "Map missing portrait values";
+  }
+  @if not map.has-key($map, $landscapeKey) {
+    @error "Map missing landscape values";
+  }
+  $portrait: map.get($map, $portraitKey);
+  $landscape: map.get($map, $landscapeKey);
+  $mapPortrait: mapApplyScalar($scalar, $portrait);
+  $mapLandscape: mapApplyScalar($scalar, $landscape);
+  $newMap: (
+    "portrait": $mapPortrait,
+    "landscape": $mapLandscape,
+  );
+  @return $newMap;
+}
+
+//
+// Wrap values of a nested portrait/landscape breakpoint map
+// NOTE: Assumes format of "modifier(value)" with parentheses
+//
+@function getWrappedOrientationBpMap($modifier, $map) {
+  @if not map.has-key($map, $portraitKey) {
+    @error "Map missing portrait values";
+  }
+  @if not map.has-key($map, $landscapeKey) {
+    @error "Map missing landscape values";
+  }
+  $portrait: map.get($map, $portraitKey);
+  $landscape: map.get($map, $landscapeKey);
+
+  $mapPortrait: mapWrapValues($modifier, $portrait);
+  $mapLandscape: mapWrapValues($modifier, $landscape);
+  $newMap: (
+    "portrait": $mapPortrait,
+    "landscape": $mapLandscape,
+  );
+  @return $newMap;
+}
+
+//
+// Applies 2 text outlines of provided colors
+//
+@mixin text-double-outline($text, $colorText, $colorOutline1, $colorOutline2) {
+  position: relative;
+  z-index: 0;
+  color: $colorText;
+  -webkit-text-stroke: 0.05em $colorOutline1;
+  &::after {
+    position: absolute;
+    content: $text;
+    -webkit-text-stroke: 0.15em $colorOutline2;
+    top: 0; right: 0rem; bottom: 0; left: 0;
+    z-index: -1;
+  }
+}
+
+/**
+  Converts unitless numbers or px values to rem
+  Example:
+    width: pxToRem(48px);         => width: 3rem;
+    padding: pxToRem(8 16 24 32); => padding: 0.5rem 1rem 1.5rem 2rem;
+*/
+@function pxToRem($pxValues) {
+  $remValues: (); // empty list
+  $base: stripUnit($base-font-size);
+
+  @each $pxValue in $pxValues {
+    @if type-of($pxValue) != 'number' or (not unitless($pxValue) and unit($pxValue) != 'px') {
+      @error "Number or px value required, invalid input: #{$pxValue}";
+    }
+    $pxValue: stripUnit($pxValue); // remove 'px' unit if present
+    $remValues: append($remValues,  ($pxValue / $base) + 0rem);
+  }
+
+  // for a single value return the numeric variable instead of a string to allow use in calculations
+  @if length($remValues == 1) {
+    @return nth($remValues, 1);
+  }
+  @return $remValues;
+}
+
+/**
+  Remove unit from value list
+*/
+@function stripUnits($values) {
+  $unitless: ();
+
+  @if length($list: $values) == 1 {
+    @return stripUnit($values);
+  }
+  @else {
+    @each $val in $values {      
+      $unitless: append($unitless, stripUnit($val));
+    }
+    @return $unitless;
+  }
+}
+
+/**
+  Remove unit from value e.g. 16px => 16, 2rem => 2
+*/
+@function stripUnit($value) {
+  @if type-of($value) != 'number' {
+    @error "Number value required, invalid input: #{$value}";
+  }
+  $unitless: $value / ($value * 0 + 1); // remove unit dividing by 1unit
+  @return $unitless;
+}
+
+
+//
+// Placeholders
+//
+// Page bg
+%box-background {
+  $cubes_width: 100px;
+  $cubes_height: $cubes_width * 1.75; //35px;
+  $cubes_offset_x: math.div($cubes_width, 2);
+  $cubes_offset_y: math.div($cubes_height, 2);
+  $color_cubes1: colors.$color_aqua-2;
+  $color_cubes2: colors.$color_aqua-3;
+  $color_cubes3: colors.$color_aqua-4;
+
+  z-index: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  opacity: 0.25;
+  background-color: $color_cubes3; // cube right faces
+  background-image: 
+  // top cube top face bottom-left
+    linear-gradient(
+      30deg,
+      $color_cubes1 12%,
+      transparent 12.5%,
+      transparent 87%,
+      $color_cubes1 87.5%,
+      $color_cubes1
+    ),
+    // top cube top face top-left
+    linear-gradient(
+        150deg,
+        $color_cubes1 12%,
+        transparent 12.5%,
+        transparent 87%,
+        $color_cubes1 87.5%,
+        $color_cubes1
+      ),
+    // middle cube top face bottom-left
+    linear-gradient(
+        30deg,
+        $color_cubes1 12%,
+        transparent 12.5%,
+        transparent 87%,
+        $color_cubes1 87.5%,
+        $color_cubes1
+      ),
+    // middle cube top face top-left
+    linear-gradient(
+        150deg,
+        $color_cubes1 12%,
+        transparent 12.5%,
+        transparent 87%,
+        $color_cubes1 87.5%,
+        $color_cubes1
+      ),
+    // top cube left face top-right
+    linear-gradient(
+        60deg,
+        $color_cubes2 25%,
+        transparent 25.5%,
+        transparent 75%,
+        $color_cubes2 75%,
+        $color_cubes2
+      ),
+    // middle cube left face top-right
+    linear-gradient(
+        60deg,
+        $color_cubes2 25%,
+        transparent 25.5%,
+        transparent 75%,
+        $color_cubes2 75%,
+        $color_cubes2
+      );
+  background-size: $cubes_width $cubes_height;
+  background-position: 0 0, 0 0, $cubes_offset_x $cubes_offset_y,
+    $cubes_offset_x $cubes_offset_y, 0 0, $cubes_offset_x $cubes_offset_y;
+}
