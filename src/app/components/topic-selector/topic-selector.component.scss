@@ -1,0 +1,34 @@
+@use '../../scss/lib';
+
+div {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vw;
+
+  button {
+    width: 18vw;
+    padding: 0.25vw;
+    @include lib.media-breakpoint-gte(lg) {
+      width: 14vw;
+    }
+    @include lib.media-breakpoint-gte(ws) {
+      width: 10vw;
+    }
+
+    &.selected {
+      background-color: lib.$color_aqua_4;    
+    }
+    &:first-of-type {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:last-of-type {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+}

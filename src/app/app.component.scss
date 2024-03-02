@@ -7,11 +7,11 @@
   height: 100%;
 
   .box-background {
+    pointer-events: none;
     @extend %box-background;
   }
 
   .page {
-    z-index: 1;
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -34,6 +34,8 @@
         transparent 89%
       );
     app-site-header {
+      pointer-events: none;
+      z-index: 1;
       $headerOffest: (
         'zero': -14vw, 
         'min': -14vw,
@@ -50,6 +52,7 @@
       @include lib.breakpointProp('margin-bottom', $headerOffest);
     }
     .site-page {  
+      z-index: 0;
       flex: 1;
       display: flex;
       flex-direction: row;
@@ -71,11 +74,11 @@
 
       app-site-page {
         flex: 1;
-        padding-bottom: 4vw;
+        padding: 2vw 0 4vw;
         background-color: lib.$color_white;
         border-radius: 0 0 4vw 4vw;
         @include lib.media-breakpoint-gte(lg) {
-          padding-bottom: 2vw;
+          padding: 1vw 0 2vw;
           border-radius: 0 0 2vw 2vw;
         }
       }

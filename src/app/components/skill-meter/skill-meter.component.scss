@@ -15,6 +15,7 @@
   //background-color: lib.$color_aqua_3;
   background-color: lib.$color_gray_3;
   box-shadow: 0px 0px 10px -2px lib.$color_black;
+  font-family: 'Righteous', sans-serif;
 
   .contact-info-container {
     z-index: 1;
@@ -119,16 +120,16 @@
         display: inline-flex;
         flex-direction: column;
         justify-content: flex-start;
-        color: lib.$color_white;
+        color: lib.$color_aqua_1;
         text-align: center;
 
         &:nth-of-type(1) {
-          top: 8%;
-          left: 16%;
+          top: 4%;
+          left: 15%;
         }
         &:nth-of-type(2) {
-          top: 8%;
-          right: 16%;
+          top: 4%;
+          right: 15%;
         }
         &:nth-of-type(3) {
           top: 42%;
@@ -152,13 +153,14 @@
           justify-content: center;
           span {
             display: block;
-            //text-shadow: 1px 1px 4px lib.$color_black;
+            padding-top: 0.25vw;
             line-height: 1;
             @include lib.bpProp('font-size', 2.75vw);
             white-space: nowrap;
 
             &.skill {
               @include lib.bpProp('font-size', 2.25vw);
+              color: lib.$color_white;
             }
           }
           span.dim {

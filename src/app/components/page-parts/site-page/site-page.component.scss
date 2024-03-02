@@ -11,6 +11,7 @@
 }
 
 :host {
+  position: relative;
   display: block;
   background-image: 
     linear-gradient(180deg, transparent 40%, lib.$color_white 80%), 
@@ -21,21 +22,26 @@
       transparent 2px,
       transparent 10px
     );
-    
+
+  app-topic-selector {
+    position: relative;
+    display: block;
+  }
+  
   h2 {
     margin: 0;
-    padding: 6vw 4vw 5vw;
+    padding: 3vw 4vw 5vw;
     @include lib.media-breakpoint-gte(lg) {
-      padding: 4vw 3vw 3vw;
+      padding: 2vw 3vw 3vw;
     }
     @include lib.media-breakpoint-gte(ws) {
-      padding: 3vw 2vw 2.5vw;
+      padding: 1.5vw 2vw 2.5vw;
     }
     @include lib.media-breakpoint-gte(hd) {
-      padding: 2.5vw 1.75vw 2vw;
+      padding: 1.25vw 1.75vw 2vw;
     }
     @include lib.media-breakpoint-gte('4k') {
-      padding: 2vw 1.5vw 1.75vw;
+      padding: 1vw 1.5vw 1.75vw;
     }
   }
   app-content-section {

@@ -1,0 +1,8 @@
+<div>
+  <button
+    [class.selected]="onTopic(PageTopicsEnum.History)"
+    (click)="selectTopic(PageTopicsEnum.History)">History</button>
+  <button
+    [class.selected]="onTopic(PageTopicsEnum.Portfolio)" 
+    (click)="selectTopic(PageTopicsEnum.Portfolio)">Portfolio</button>
+</div>
