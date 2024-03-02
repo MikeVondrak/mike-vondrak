@@ -20,22 +20,22 @@ h5 {
 $font-base-size: 1.5vw;
 
 h1 {
-  @include utility.bpProp('font-size', 13vw);
+  @include utility.bpProp('font-size', 12vw);
 }
 h2 {
-  @include utility.bpProp('font-size', 11vw);
+  @include utility.bpProp('font-size', 10vw);
 }
 h3 {
-  @include utility.bpProp('font-size', 9vw);
+  @include utility.bpProp('font-size', 8.5vw);
 }
 h4 {
   @include utility.bpProp('font-size', 7vw);
 }
 h5 {
-  @include utility.bpProp('font-size', 5vw);
+  @include utility.bpProp('font-size', 5.5vw);
 }
-p, a, button, ul, ol {
-  @include utility.bpProp('font-size', 5vw);
+p, a, button, ul, ol, div, span {
+  @include utility.bpProp('font-size', 4vw);
 }
 
 

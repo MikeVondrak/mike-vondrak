@@ -1,0 +1,15 @@
+<div class="title-container">
+  <div class="title-row">
+    <span *ngFor="let title of titleTexts">
+      {{ title }}
+    </span>
+  </div>
+  <div class="title-row subtitle">
+    <span *ngFor="let subtitle of subtitleTexts">
+      {{ subtitle }}
+    </span>
+  </div>
+</div>
+<div class="content-container">
+  <ng-content></ng-content>
+</div>

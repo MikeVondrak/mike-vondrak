@@ -1,0 +1,116 @@
+@use '../../../scss/lib';
+
+%pagePadding {
+  padding:  1vw 4vw 3vw;
+  @include lib.media-breakpoint-gte(lg) {
+    padding:  0.75vw 3vw 2vw;
+  }
+  @include lib.media-breakpoint-gte(ws) {
+    padding:  0.5vw 2vw 1vw;
+  }
+}
+
+:host {
+  display: block;
+  background-image: 
+    linear-gradient(180deg, transparent 40%, lib.$color_white 80%), 
+    repeating-linear-gradient(
+      -45deg,
+      rgba(lib.$color_black, 0.05),
+      rgba(lib.$color_black, 0.05) 2px,
+      transparent 2px,
+      transparent 10px
+    );
+    
+  h2 {
+    margin: 0;
+    padding: 6vw 4vw 5vw;
+    @include lib.media-breakpoint-gte(lg) {
+      padding: 4vw 3vw 3vw;
+    }
+    @include lib.media-breakpoint-gte(ws) {
+      padding: 3vw 2vw 2.5vw;
+    }
+    @include lib.media-breakpoint-gte(hd) {
+      padding: 2.5vw 1.75vw 2vw;
+    }
+    @include lib.media-breakpoint-gte('4k') {
+      padding: 2vw 1.5vw 1.75vw;
+    }
+  }
+  app-content-section {
+    display: block;
+    .summary {
+      @extend %pagePadding;
+      padding-bottom: 0;
+      .highlight {
+        font-weight: bold;
+        //color: lib.$color_aqua_2;
+        //background-color: lib.$color_aqua_4;      
+      }
+    }
+
+    .technology {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 2vw;
+      width: 90%;
+      margin: 0 auto;
+      @extend %pagePadding;
+      padding-top: 0;
+      span {
+        @include lib.bpProp('font-size', 2.5vw);
+      }
+      span:first-of-type {
+        font-weight: bold;
+      }
+    }
+
+    ul {
+      margin: 0;
+      @extend %pagePadding;
+      list-style-type: none;
+      li {
+        position: relative;
+        margin-bottom: 1.5vw;
+        &::before {
+          content: '\2b9e';
+          position: absolute;
+          display: block;
+          top: 0.6vw;
+          left: -3.25vw;
+          color: lib.$color_aqua_1;
+          @include lib.media-breakpoint-gte(sm) {
+            top: 0.7vw;
+            left: -3vw;
+          }
+          @include lib.media-breakpoint-gte(md) {
+            top: 0.7vw;
+            left: -3vw;
+          }
+          @include lib.media-breakpoint-gte(lg) {
+            //top: 0.4vw;
+            left: -2.5vw;
+          }
+          @include lib.media-breakpoint-gte(ws) {
+            top: 0.4vw;
+            left: -1.5vw;
+          }
+        }
+        p {
+          margin: 0;
+          padding: 1vw 0vw;
+          @include lib.media-breakpoint-gte(xl) {
+            padding: 0.5vw 0vw;
+          }
+        }
+        .title {
+          font-weight: bold;
+          color: lib.$color_aqua_2;
+        }
+      }
+    }
+  }
+}

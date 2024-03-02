@@ -1,26 +1,33 @@
-@use '../../../scss/lib';
+@use "../../../scss/lib";
 
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 2vw;  
+  @include lib.media-breakpoint-gte(xs) {
+    flex-direction: row; 
+    align-items: flex-start;
+    padding: 2vw 0 0 1.5vw;
+  }
+  width: 100%;
 
   .page-title-container {
     z-index: 1;
     position: relative;
     padding: 1vw 4vw 2vw;
-    border-radius: 4vw 0 4vw 0;
+    border-radius: 4vw 4vw 4vw 0;
     @include lib.media-breakpoint-gte(lg) {
       padding: 1vw 4vw 1.2vw;
-      border-radius: 2vw 0 2vw 0;
+      border-radius: 2vw 2vw 2vw 0;
     }
     background-color: lib.$color_aqua_1;
+    box-shadow: 0px 0px 10px 0px lib.$color_black;
     text-align: center;
     .page-title {
+      line-height: 1;
       margin: 0;
-      padding: 0;
+      padding: 1vw 0;
       @include lib.bpProp("font-size", 12vw);
     }
     .page-tagline {
@@ -35,8 +42,17 @@ header {
   .skill-meter-container {
     z-index: 0;
     position: relative;
-    top: 2vw;
-    left: -1vw;
+    top: 8vw;
+    @include lib.media-breakpoint-gte(xs) {
+      left: -1.5vw;
+    }
+    @include lib.media-breakpoint-gte(sm) {
+      top: 6vw;
+    }
+    @include lib.media-breakpoint-gte(md) {
+      top: 2vw;
+      left: -1.5vw;
+      padding-top: 0;
+    }
   }
-
 }

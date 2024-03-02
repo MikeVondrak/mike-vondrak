@@ -1,0 +1,54 @@
+  @use '../../scss/lib';
+
+:host {
+  display: block;
+
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+    width: 100%;
+    padding: 2vw 2vw;
+    border-radius: 4vw 4vw 0 0;
+    @include lib.media-breakpoint-gte(lg) {
+      gap: 0.25vw;
+      padding: 1vw 2vw;
+      border-radius: 2vw 2vw 0 0;
+    }
+    @include lib.media-breakpoint-gte('2k') {
+      gap: 0.125vw;
+      padding: 0.75vw 1vw;
+      border-radius: 1vw 1vw 0 0;
+    }
+    
+    background-color: lib.$color_gray_1;
+    //box-shadow: 0px 2px 10px 0px #000;
+
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      color: lib.$color_aqua_3;
+      font-weight: bold;
+      span:last-child {
+        text-align: right;
+      }
+      &.subtitle {
+        width: 98%;
+        color: lib.$color_gray_3;
+        span {
+          font-weight: normal;
+          @include lib.bpProp('font-size', 3vw);
+          &:last-child {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+  .content-container {
+    background-color: lib.$color_white;
+  }
+}

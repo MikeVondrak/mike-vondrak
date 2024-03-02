@@ -4,11 +4,12 @@ import { AppReadyEvent } from './app-ready-event';
 import { SiteHeaderComponent } from './components/page-parts/site-header/site-header.component';
 import { SiteFooterComponent } from './components/page-parts/site-footer/site-footer.component';
 import { SitePageComponent } from './components/page-parts/site-page/site-page.component';
+import { SiteSidebarComponent } from './components/page-parts/site-sidebar/site-sidebar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SiteHeaderComponent, SiteFooterComponent, SitePageComponent],
+  imports: [RouterOutlet, SiteHeaderComponent, SiteFooterComponent, SitePageComponent, SiteSidebarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

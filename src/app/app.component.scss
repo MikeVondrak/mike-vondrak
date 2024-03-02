@@ -3,7 +3,7 @@
 :host {
   position: relative;
   display: block;
-  width: 100%;  
+  width: 100%;
   height: 100%;
 
   .box-background {
@@ -18,20 +18,74 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-image: linear-gradient(
         167deg,
-        rgba(0, 0, 0, 0.2),
-        rgba(0, 0, 0, 0.4) 15%,
-        rgba(0, 0, 0, 0.7) 42%,
+        rgba(lib.$color_black, 0.2),
+        rgba(lib.$color_black, 0.3) 15%,
+        rgba(lib.$color_black, 0.4) 42%,
         transparent 82%
       ),
       linear-gradient(
         222deg,
-        rgba(0, 0, 0, 0.2),
-        rgba(0, 0, 0, 0.4) 25%,
-        rgba(0, 0, 0, 0.7) 52%,
+        rgba(lib.$color_black, 0.2),
+        rgba(lib.$color_black, 0.3) 25%,
+        rgba(lib.$color_black, 0.4) 52%,
         transparent 89%
       );
+    app-site-header {
+      $headerOffest: (
+        'zero': -14vw, 
+        'min': -14vw,
+        'xs': -11.5vw,
+        'sm': -18vw, // layout change 
+        'md': -20vw,
+        'lg': -15.25vw, 
+        'xl': -13.75vw, 
+        'ws': -9.75vw,
+        'hd': -8vw,
+        '2k': -6.25vw,
+        '4k': -4vw,
+      );
+      @include lib.breakpointProp('margin-bottom', $headerOffest);
+    }
+    .site-page {  
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      $pageWidths: (
+        'zero': 100vw, 
+        'xs': 97.25vw,
+        'sm': 97vw,
+        'md': 85.75vw, 
+        'lg': 72.25vw, 
+        'xl': 64.25vw, 
+        'ws': 54.25vw,
+        'hd': 45.4vw,
+        '2k': 38.9vw,
+        '4k': 34vw,
+      );
+      @include lib.breakpointProp('width', $pageWidths);
+
+      app-site-page {
+        flex: 1;
+        padding-bottom: 4vw;
+        background-color: lib.$color_white;
+        border-radius: 0 0 4vw 4vw;
+        @include lib.media-breakpoint-gte(lg) {
+          padding-bottom: 2vw;
+          border-radius: 0 0 2vw 2vw;
+        }
+      }
+
+      app-site-sidebar {
+        display: block;
+      }
+    }
+    
+    app-site-footer {
+    }
   }
 }

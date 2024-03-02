@@ -2,17 +2,19 @@
 
 .skill-meter-container {
   position: relative;
-  //width: 14vw;
   padding: 2vw 3vw;
+  border-radius: 0vw 4vw 50% 50%;
   @include lib.media-breakpoint-gte(md) {
     padding: 1vw 2vw;
+    border-radius: 0 2vw 50% 50%;
   }
   @include lib.media-breakpoint-gte(hd) {
-    padding: 0.5vw 1.5vw;
+    padding: 0.75vw 1.5vw;
   }
 
-  border-radius: 0 2vw 50% 50%;
+  //background-color: lib.$color_aqua_3;
   background-color: lib.$color_gray_3;
+  box-shadow: 0px 0px 10px -2px lib.$color_black;
 
   .contact-info-container {
     z-index: 1;
@@ -20,55 +22,150 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 1vw;
+    
+    a {
+      @include lib.bpProp('font-size', 4vw);
+    }
   } 
   .skill-meter-dial-container {
     z-index: 0;
+    position: relative;
     display: flex; 
     justify-content: center;
-    
-    top: 4vw;
-    right: 0vw;
-    //height: 14vw;
-    //width: 14vw;
-    //padding: 0.5vw;
-    //border-radius: 0 0 50% 50%;
-    //background-color: lib.$color_gray_3;
-
 
     .skill-meter-dial {
-      width: 60vw;
-      height: 60vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 34vw;
+      height: 34vw;
+      @include lib.media-breakpoint-gte(xs) {
+        width: 30vw;
+        height: 30vw;
+      }
       @include lib.media-breakpoint-gte(sm) {
         width: 32vw;
         height: 32vw;
       }
       @include lib.media-breakpoint-gte(md) {
-        width: 28vw;
-        height: 28vw;
+        width: 26vw;
+        height: 26vw;
       }
       @include lib.media-breakpoint-gte(lg) {
-        width: 24vw;
-        height: 24vw;
-      }
-      @include lib.media-breakpoint-gte(ws) {
         width: 20vw;
         height: 20vw;
       }
-      @include lib.media-breakpoint-gte(hd) {
+      @include lib.media-breakpoint-gte(xl) {
         width: 18vw;
         height: 18vw;
       }
-      @include lib.media-breakpoint-gte('2k') {
+      @include lib.media-breakpoint-gte(ws) {
+        width: 14vw;
+        height: 14vw;
+      }
+      @include lib.media-breakpoint-gte(hd) {
         width: 12vw;
         height: 12vw;
       }
-      @include lib.media-breakpoint-gte('4k') {
+      @include lib.media-breakpoint-gte('2k') {
         width: 10vw;
         height: 10vw;
       }
-      background-color: red;
+      @include lib.media-breakpoint-gte('4k') {
+        width: 8vw;
+        height: 8vw;
+      }
+      //background-color: lib.$color_gray_3;
       border-radius: 50%;
+
+      .skill-meter-ratings-bg {
+        position: absolute;
+        width: 60%;
+        height: 60%;
+        border-radius: 50%;
+        background-color: lib.$color_aqua_4;
+      }
+
+      .skill-meter-ratings {
+        width: 60%;
+        height: 60%;
+        border-radius: 50%;
+        $step: 15%;
+        background-image: radial-gradient(
+          circle,
+          lib.$color_aqua_4 0%,
+          lib.$color_aqua_4 $step,
+          lib.$color_aqua_3 $step,
+          lib.$color_aqua_3 $step * 2,
+          lib.$color_aqua_2 $step * 2,
+          lib.$color_aqua_2 $step * 3,
+          lib.$color_aqua_1 $step * 3,
+          lib.$color_aqua_1 $step * 4,
+          lib.$color_yellow $step * 4,
+          lib.$color_yellow 100%,
+        );
+        clip-path: polygon(
+          25% 10%, 65% 28%, 97% 50%, 59% 69%, 27% 86%, 12.5% 50%
+        );
+      }
+    }
+    
+    .skill-rating-labels {
+      position: absolute;
+      top: 0; bottom: 0; left: 0; right: 0;
+
+      .skill-rating {
+        position: absolute;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        color: lib.$color_white;
+        text-align: center;
+
+        &:nth-of-type(1) {
+          top: 8%;
+          left: 16%;
+        }
+        &:nth-of-type(2) {
+          top: 8%;
+          right: 16%;
+        }
+        &:nth-of-type(3) {
+          top: 42%;
+          right: -2%;
+        }
+        &:nth-of-type(4) {
+          top: 77%;
+          right: 16%;
+        }
+        &:nth-of-type(5) {
+          top: 77%;
+          left: 16%;
+        }
+        &:nth-of-type(6) {
+          top: 42%;
+          left: -2%;
+        }
+
+        > div {
+          display: flex;
+          justify-content: center;
+          span {
+            display: block;
+            //text-shadow: 1px 1px 4px lib.$color_black;
+            line-height: 1;
+            @include lib.bpProp('font-size', 2.75vw);
+            white-space: nowrap;
+
+            &.skill {
+              @include lib.bpProp('font-size', 2.25vw);
+            }
+          }
+          span.dim {
+            color: lib.$color_gray_2;
+          }
+        }
+      }
     }
   }
 }

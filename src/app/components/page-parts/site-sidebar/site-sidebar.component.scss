@@ -1,0 +1,73 @@
+@use '../../../scss/lib';
+
+:host {
+  padding: 2vw;
+  @include lib.bpProp('width', 34vw);
+  border-bottom-right-radius: 4vw;
+  @include lib.media-breakpoint-gte(lg) {
+    padding: 0vw 1.5vw 1.5vw;
+    border-bottom-right-radius: 2vw;
+  }
+  @include lib.media-breakpoint-gte(ws) {
+    padding: 0vw 1vw 1vw;
+  }
+  @include lib.bpProp('padding-top', 38vw);
+  background-color: lib.$color_aqua_4;
+
+  color: lib.$color_white;
+  font-family: 'Agency FB';
+
+  section {
+    @include lib.bpProp('margin-bottom', 10vw);
+
+    .asterisk {
+      @include lib.bpProp('font-size', 2.5vw);
+      text-align: center;
+      color: lib.$color_gray_3;
+    }
+    h2 {
+      @include lib.bpProp('margin-bottom', 3vw);
+      color: lib.$color_aqua_1;
+      @include lib.bpProp('font-size', 5vw);
+      text-align: center;
+      text-transform: uppercase;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1vw;
+        margin: 0;
+        span {
+          @include lib.bpProp('font-size', 3vw);
+        }
+
+        .subtext {
+          color: lib.$color_gray_2;
+          @include lib.bpProp('font-size', 2.5vw);
+        }
+      }
+    }
+    &.technology {
+      ul {
+        li {
+          justify-content: center;
+          gap: 0.5vw;
+        }
+      }
+    }
+    &.education {
+      text-align: center;
+      ul {
+        li {
+          gap: 0.25vw;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
