@@ -1,7 +1,12 @@
 <div class="title-container">
   <div class="title-row">
     <span *ngFor="let title of titleTexts">
-      {{ title }}
+      <a *ngIf="isLink(title); else NoLink" [href]="getLink(title)" target="_blank">
+        {{ getLinkName(title) }}
+      </a>
+      <ng-template #NoLink>
+        {{ title }}
+      </ng-template>
     </span>
   </div>
   <div class="title-row subtitle">

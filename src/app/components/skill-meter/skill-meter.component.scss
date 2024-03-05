@@ -25,6 +25,7 @@
     align-items: center;
     
     a {
+      pointer-events: all;
       @include lib.bpProp('font-size', 4vw);
     }
   } 
@@ -122,30 +123,34 @@
         justify-content: flex-start;
         color: lib.$color_aqua_1;
         text-align: center;
-
+    
         &:nth-of-type(1) {
           top: 4%;
-          left: 15%;
+          left: 14%;
+          color: lib.$color_yellow;
         }
         &:nth-of-type(2) {
           top: 4%;
-          right: 15%;
+          right: 14%;
+          color: lib.$color_aqua_2;
         }
         &:nth-of-type(3) {
-          top: 42%;
-          right: -2%;
+          top: 39%;
+          right: -3%;
+          color: lib.$color_yellow;
         }
         &:nth-of-type(4) {
           top: 77%;
           right: 16%;
+          color: lib.$color_aqua_2;
         }
         &:nth-of-type(5) {
           top: 77%;
           left: 16%;
         }
         &:nth-of-type(6) {
-          top: 42%;
-          left: -2%;
+          top: 39%;
+          left: -3%;
         }
 
         > div {

@@ -1,4 +1,4 @@
 export enum PageTopics {
-  History = 'History',
-  Portfolio = 'Portfolio'
+  History = 'Left',
+  Portfolio = 'Right'
 }

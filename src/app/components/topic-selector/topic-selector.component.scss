@@ -1,34 +1,70 @@
-@use '../../scss/lib';
+@use "../../scss/lib";
 
-div {
-  position: relative;
+%buttonProps {
+  width: 18vw;
+  padding: 0.25vw;
+  @include lib.media-breakpoint-gte(lg) {
+    width: 14vw;
+  }
+  @include lib.media-breakpoint-gte(ws) {
+    width: 10vw;
+  }
+}
+
+:host {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 1vw;
+  width: 100%;
+  .container {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1vw;
+    border-radius: 2vw;
+    background-color: lib.$color_gray_4;
+    box-shadow: 0px 2px 8px -2px lib.$color_black;
 
-  button {
-    width: 18vw;
-    padding: 0.25vw;
+    width: 35.8vw;
     @include lib.media-breakpoint-gte(lg) {
-      width: 14vw;
+      width: 27.8vw;
+      border-radius: 1vw;
     }
     @include lib.media-breakpoint-gte(ws) {
-      width: 10vw;
+      width: 19.8vw;
     }
 
-    &.selected {
-      background-color: lib.$color_aqua_4;    
+    .clickable-indicator {
+      z-index: 0;
+      position: absolute;
+      @extend %buttonProps;
+      height: 101%;
+      background-color: lib.$color_aqua_2;
+      left: 50%;
+      //box-shadow: 0px 4px 10px -2px lib.$color_black;
     }
-    &:first-of-type {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-    &:last-of-type {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+
+    button {
+      position: relative;
+      z-index: 1;
+      @extend %buttonProps;
+      background-color: transparent;
+      transition: color 0.4s ease-in-out;
+
+      &.selectable {
+        color: lib.$color_orange;
+      }
+
+      &:first-of-type {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      &:last-of-type {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
     }
   }
-
 }

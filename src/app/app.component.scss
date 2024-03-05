@@ -42,12 +42,12 @@
         'xs': -11.5vw,
         'sm': -18vw, // layout change 
         'md': -20vw,
-        'lg': -15.25vw, 
-        'xl': -13.75vw, 
+        'lg': -14.85vw, 
+        'xl': -13.25vw, 
         'ws': -9.75vw,
         'hd': -8vw,
         '2k': -6.25vw,
-        '4k': -4vw,
+        '4k': -4.2vw,
       );
       @include lib.breakpointProp('margin-bottom', $headerOffest);
     }

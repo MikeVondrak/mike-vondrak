@@ -1,6 +1,10 @@
 @use "../scss/colors";
 @use "../scss/utility";
 
+%textShadow {
+  text-shadow: 0.05vw 0.05vw 0.075vw colors.$color_black;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -25,6 +29,7 @@ body {
     border-bottom: 1px solid rgba(colors.$color_cta, 0);
     text-decoration: none;
     transition: border 0.4s;
+    @extend %textShadow;
     &:hover {
       border-bottom: 1px solid rgba(colors.$color_cta, 1);
     }
@@ -39,7 +44,7 @@ body {
     color: colors.$color_white;
     background-color: colors.$color_orange;
     transition: background-color 0.2s ease-out;
-    text-shadow: 1px 1px 2px colors.$color_black;
+    @extend %textShadow;
     border-radius: 1vw;
     @include utility.media-breakpoint-gte(md) {
       padding: 0.75vw 1.5vw;

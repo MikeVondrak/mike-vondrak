@@ -1,8 +1,15 @@
-<div>
+<div class="container">
+  <div class="clickable-indicator" [@slideHorizontal]="topic"></div>
   <button
-    [class.selected]="onTopic(PageTopicsEnum.History)"
-    (click)="selectTopic(PageTopicsEnum.History)">History</button>
+    [class.selectable]="onTopic(PageTopicsEnum.Portfolio)"
+    (click)="selectTopic(PageTopicsEnum.History)"
+  >
+    History
+  </button>
   <button
-    [class.selected]="onTopic(PageTopicsEnum.Portfolio)" 
-    (click)="selectTopic(PageTopicsEnum.Portfolio)">Portfolio</button>
+    [class.selectable]="onTopic(PageTopicsEnum.History)" 
+    (click)="selectTopic(PageTopicsEnum.Portfolio)"
+  >
+    Portfolio
+  </button>
 </div>

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { PageTopics } from '../../models/enums';
+import { topicSelectAnimation } from './topic-selector.animations';
 
 @Component({
   selector: 'app-topic-selector',
@@ -8,17 +9,24 @@ import { PageTopics } from '../../models/enums';
   templateUrl: './topic-selector.component.html',
   styleUrl: './topic-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush, // on push so template function doesn't run every CD cycle
+  animations: [topicSelectAnimation],
 })
 export class TopicSelectorComponent {
+  @Output() currentTopic: EventEmitter<PageTopics> = new EventEmitter();
 
   public PageTopicsEnum = PageTopics;
-  public currentTopic = PageTopics.History;
+  public topic = PageTopics.History;
 
-  public selectTopic(topic: PageTopics) {
-    this.currentTopic = topic;
+  public selectTopic(newTopic: PageTopics) {
+    console.log('TOPIC: ', newTopic, this.topic);
+    if (this.topic === newTopic) {
+      return;
+    }
+    this.topic = newTopic;
+    this.currentTopic.emit(this.topic);
   }
 
-  public onTopic(testTopic: PageTopics): boolean {
-    return (testTopic === this.currentTopic);
-  }  
+  public onTopic(checkTopic: PageTopics): boolean {
+    return checkTopic === this.topic;
+  }
 }
