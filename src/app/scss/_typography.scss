@@ -17,8 +17,6 @@ h5 {
   font-weight: normal;
 }
 
-$font-base-size: 1.5vw;
-
 h1 {
   @include utility.bpProp('font-size', 12vw);
 }
@@ -36,6 +34,27 @@ h5 {
 }
 p, a, button, ul, ol, div, span {
   @include utility.bpProp('font-size', 4vw);
+}
+
+@media print {
+  h1 {
+    @include utility.bpProp('font-size', 9vw);
+  }
+  h2 {
+    @include utility.bpProp('font-size', 7vw);
+  }
+  h3 {
+    @include utility.bpProp('font-size', 4.5vw);
+  }
+  h4 {
+    @include utility.bpProp('font-size', 3.75vw);
+  }
+  h5 {
+    @include utility.bpProp('font-size', 3vw);
+  }
+  p, a, button, ul, ol, div, span {
+    @include utility.bpProp('font-size', 2.5vw);
+  }
 }
 
 
