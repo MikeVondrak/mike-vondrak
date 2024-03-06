@@ -89,6 +89,9 @@
     }
     
     app-site-footer {
+      @media print {
+        diplay: none;
+      }
     }
   }
 }

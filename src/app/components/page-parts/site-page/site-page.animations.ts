@@ -40,13 +40,13 @@ const leaveKeyframes = [
     offset: 0.33,
     height: '50vh',
     opacity: 0.25,
-    transform: 'translateY(-20%) scale(0.75)'
+    transform: 'translateY(-10%) scale(0.75)'
   }),
   style({
     offset: 0.66,
     height: '25vh',
     opacity: 0,
-    transform: 'translateY(-50%) scale(0.5)'
+    transform: 'translateY(-20%) scale(0.5)'
   }),
   style({
     offset: 1,

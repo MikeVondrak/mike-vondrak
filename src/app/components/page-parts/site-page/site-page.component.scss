@@ -15,11 +15,6 @@
   position: relative;
   display: block;
   background-image: 
-    // linear-gradient(
-    //   180deg,
-    //   transparent 40%,
-    //   lib.$color_white 80%
-    // ),
     repeating-linear-gradient(
       -45deg,
       rgba(lib.$color_black, 0.05),
@@ -28,12 +23,19 @@
       transparent 10px
     );
 
+  app-topic-selector {
+    @media print {
+      display: none;
+    }
+  }
+  @media print {
+    margin-top: 4vw;
+  }
+
   .topics-container {
     position: relative;
     display: block;
-    // flex-direction: row;
-    // justify-content: center;
-    // align-items: flex-start;
+
     .topic-container {
       overflow: hidden;
       position: relative;
@@ -104,12 +106,6 @@
           width: 90%;
           margin-left: 5%;
           @extend %pagePadding;
-          // padding-top: 1vw;
-          // @include lib.media-breakpoint-gte(lg) {
-          //   padding-top: 0.5vw;
-          // }
-          //padding-top: 0;
-          //background-color: rgba(lib.$color_aqua_1, 0.25);
           span {
             @include lib.bpProp("font-size", 2.5vw);
           }
@@ -122,36 +118,50 @@
           margin: 0;
           @extend %pagePadding;
           list-style-type: none;
+
+          
           li {
             position: relative;
             margin-bottom: 1.5vw;
-            &::before {
-              content: "\2b9e";
-              position: absolute;
-              display: block;
-              top: 0.6vw;
-              left: -3.25vw;
-              color: lib.$color_aqua_1;
-              @include lib.media-breakpoint-gte(sm) {
-                top: 0.7vw;
-                left: -3vw;
-              }
-              @include lib.media-breakpoint-gte(md) {
-                top: 0.7vw;
-                left: -3vw;
-              }
-              @include lib.media-breakpoint-gte(lg) {
-                top: 0.6vw;
-                left: -2.5vw;
-              }
-              @include lib.media-breakpoint-gte(lg) {
-                top: 0.5vw;
-              }
-              @include lib.media-breakpoint-gte(ws) {
-                top: 0.4vw;
-                left: -1.5vw;
+
+            ul {
+              margin-bottom: 0;
+              padding-right: 0;
+              padding-bottom: 0;
+
+              li {
+                margin-bottom: 0;
+                padding-bottom: 1.5vw;
+                @include lib.media-breakpoint-gte(lg) {
+                  padding-bottom: 0.75vw;
+                }
+                &::before {
+                  content: "\2b9e";
+                  position: absolute;
+                  display: block;
+                  top: 0vw;
+                  left: -3.25vw;
+                  color: lib.$color_aqua_1;
+                  @include lib.media-breakpoint-gte(sm) {
+                    left: -3vw;
+                  }
+                  @include lib.media-breakpoint-gte(md) {
+                    left: -3vw;
+                  }
+                  @include lib.media-breakpoint-gte(lg) {
+                    left: -2.5vw;
+                  }
+                  @include lib.media-breakpoint-gte(xl) {
+                    left: -2vw;
+                  }
+                  @include lib.media-breakpoint-gte(ws) {
+                    left: -1.5vw;
+                  }
+                }
               }
             }
+
+            
             p {
               margin: 0;
               padding: 1vw 0vw;
@@ -162,6 +172,12 @@
             .title {
               font-weight: bold;
               color: lib.$color_aqua_2;
+            }
+          }
+
+          &.parent-list {
+            > li::before {
+              content: none;
             }
           }
         }

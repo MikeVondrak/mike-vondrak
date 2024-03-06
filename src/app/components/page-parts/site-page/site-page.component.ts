@@ -4,6 +4,7 @@ import { ContentSectionComponent } from '../../content-section/content-section.c
 import { TopicSelectorComponent } from '../../topic-selector/topic-selector.component';
 import { PageTopics } from '../../../models/enums';
 import { sitePageAnimation } from './site-page.animations';
+import { HideForPrintDirective } from '../../../directives/hide-for-print.directive';
 
 @Component({
   selector: 'app-site-page',

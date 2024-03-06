@@ -15,7 +15,6 @@ export class ContentSectionComponent {
 
   public isLink(text: string) {
     const prefix = text.substring(0, 5);
-    console.log(prefix);
     return prefix === 'link:';
   }
   public getLinkName(text: string) {

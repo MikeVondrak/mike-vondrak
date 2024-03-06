@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { PageTopics } from '../../models/enums';
 import { topicSelectAnimation } from './topic-selector.animations';
 
@@ -16,6 +16,9 @@ export class TopicSelectorComponent {
 
   public PageTopicsEnum = PageTopics;
   public topic = PageTopics.History;
+
+  constructor() {
+  }
 
   public selectTopic(newTopic: PageTopics) {
     console.log('TOPIC: ', newTopic, this.topic);
