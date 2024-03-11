@@ -44,9 +44,8 @@
               screening resumes through deep technical and cultural reviews.
             </li>
             <li>
-              I developed a series of tools to help in the technical portion of
-              our interview process, including a Stackblitz site for live
-              coding.
+              I developed a series of tools for our interview process, including
+              a Stackblitz site for live coding.
             </li>
           </ul>
         </li>
@@ -54,9 +53,9 @@
           <p class="title">Ingenuity</p>
           <ul>
             <li>
-              I pioneered a development process and related documentation to
-              avoid churn between departments, and help the devs & QE's operate
-              from a single source of truth.
+              I pioneered a planning process and documentation to avoid churn
+              between departments, and help the Devs & QE's operate from a
+              single source of truth.
             </li>
           </ul>
         </li>
@@ -64,16 +63,13 @@
           <p class="title">Quality</p>
           <ul>
             <li>
-              I helped architect a JSON-based CMS system to allow us to make
-              changes to copy, images, and page layouts in a much shorter time
-              frame using a less restrictive pipeline.
-            </li>
-            <li>
-              The JSON is converted into a dynamically created tree of elements.
-            </li>
-            <li>
-              This system was adopted throughout our department and continues to
-              serve as the foundation for new work.
+              <span>I helped architect a JSON-based CMS system </span>to allow
+              us to make changes to copy, images, and page layouts in a shorter
+              time frame using a less restrictive pipeline.
+              <p>
+                This system was adopted throughout our department and continues
+                to serve as the foundation for new work.
+              </p>
             </li>
           </ul>
         </li>
@@ -184,7 +180,6 @@
         </li>
       </ul>
     </app-content-section>
-
     <app-content-section
       [titleTexts]="['Experian', 'Web Developer']"
       [subtitleTexts]="['Denver CO', 'August 2012 - February 2014']"
@@ -314,6 +309,47 @@
     </app-content-section>
 
     <app-content-section
+      [titleTexts]="['Mike Vondrak', 'link:mikevondrak.com']"
+    >
+      <div class="summary">
+        <img
+          class="mike-vondrak"
+          src="assets/images/portfolio/MikeVondrak.svg"
+        />
+        <p>My resume as an Angular website.</p>
+        <p>
+          I built this to get up to speed with Angular 17 and practice rapid
+          development. It took about 40 hours from design to hosted site.
+        </p>
+      </div>
+      <div class="technology">
+        <span>Technology</span>
+        <span>Angular 17, HTML5, SCSS, GitHub, Linux, DDNS, SSL, Nginx</span>
+      </div>
+    </app-content-section>
+
+    <app-content-section
+      [titleTexts]="['Solved by Software', 'link:solvedbysoftwareco.com']"
+    >
+      <div class="summary">
+        <img class="sbsco" src="assets/images/portfolio/SolvedBySoftware.svg" />
+        <p>
+          Solved by Software Co is a Salesforce and web consulting company with
+          a focus on efficiency.
+        </p>
+        <p>
+          I built this without using any frameworks, creating my own custom gulp
+          process to combine html templates at build time. I was able to achieve
+          a SPA result with an extremely lightweight site.
+        </p>
+      </div>
+      <div class="technology">
+        <span>Technology</span>
+        <span>JavaScript, HTML5, SCSS, Gulp, Nginx, AWS</span>
+      </div>
+    </app-content-section>
+
+    <app-content-section
       [titleTexts]="['Pointing Poker', 'link:pointingpokeronline.com']"
     >
       <div class="summary">
@@ -341,26 +377,6 @@
     </app-content-section>
 
     <app-content-section
-      [titleTexts]="['Mike Vondrak', 'link:mikevondrak.com']"
-    >
-      <div class="summary">
-        <img
-          class="mike-vondrak"
-          src="assets/images/portfolio/MikeVondrak.svg"
-        />
-        <p>My resume as an Angular website.</p>
-        <p>
-          I built this to get up to speed with Angular 17 and practice rapid
-          development. It took about 40 hours from design to hosted site.
-        </p>
-      </div>
-      <div class="technology">
-        <span>Technology</span>
-        <span>Angular 17, HTML5, SCSS, GitHub, Linux, DDNS, SSL, Nginx</span>
-      </div>
-    </app-content-section>
-
-    <app-content-section
       [titleTexts]="['Dayna Safferstein', 'link:daynasafferstein.com']"
     >
       <div class="summary">
@@ -371,13 +387,13 @@
         <p>The portfolio site of a designer friend of mine.</p>
         <p>
           I built the animated grid for the main page and integrated it into a
-          Squarespace site. I also added a custom javascript system for
+          Squarespace site. I also added a custom JavaScript system for
           deploying different versions of the page easily.
         </p>
       </div>
       <div class="technology">
         <span>Technology</span>
-        <span>Javascript, HTML5, SCSS</span>
+        <span>JavaScript, HTML5, SCSS, Squarespace</span>
       </div>
     </app-content-section>
   </div>

@@ -15,7 +15,7 @@ import { SiteSidebarComponent } from './components/page-parts/site-sidebar/site-
 })
 export class AppComponent implements AfterViewInit {
   public title = 'Mike Vondrak';
-  private delayAppReadyEventForMs: number = 1000;
+  private delayAppReadyEventForMs: number = 1800;
 
   constructor(private appReady: AppReadyEvent) {}
 

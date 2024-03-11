@@ -1,5 +1,22 @@
 @use "../../../scss/lib";
 
+@mixin floatLeft() {
+  float: left;
+  padding: 2vw 2vw 1vw 0vw;
+  @include lib.media-breakpoint-gte(lg) {
+    padding: 1vw 1vw 0.5vw 0vw;
+  }
+}
+
+@mixin floatRight() {
+  float: right;
+  width: 40%;
+  padding: 2vw 0 1vw 1vw;
+  @include lib.media-breakpoint-gte(lg) {
+    padding: 1vw 0 0.5vw 0.5vw;
+  }
+}
+
 %pagePadding {
   padding: 1vw 4vw 3vw;
   @include lib.media-breakpoint-gte(lg) {
@@ -73,26 +90,20 @@
             font-weight: bold;
           }
           img {
-            float: right;
-            width: 40%;
-            padding: 2vw 0 1vw 1vw;
-            @include lib.media-breakpoint-gte(lg) {
-              padding: 1vw 0 0.5vw 0.5vw;
-            }
-            &.pointing-poker {
-              float: left;
-              padding: 2vw 2vw 1vw 0;
-              @include lib.media-breakpoint-gte(lg) {
-                padding: 1vw 1vw 0.5vw 0;
-              }
-              width: 60%;
-            }
+            @include floatRight();
             &.mike-vondrak {
+              @include floatLeft();
               width: 30%;
             }
+            &.sbsco {
+              width: 30%;
+            }
+            &.pointing-poker {
+              @include floatLeft();
+              width: 60%;
+            }
             &.dayna-safferstein {
-              float: left;
-              padding-left: 0;
+              width: 50%;
             }
           }
         }
@@ -155,6 +166,9 @@
                     left: -2vw;
                   }
                   @include lib.media-breakpoint-gte(ws) {
+                    left: -1.75vw;
+                  }
+                  @include lib.media-breakpoint-gte(hd) {
                     left: -1.5vw;
                   }
                 }
