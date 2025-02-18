@@ -1,9 +1,10 @@
 <div class="box-background"></div>
+<div class="background-overlay"></div>
 <div class="page">
-  <app-site-header></app-site-header>
+  <app-site-header [internalOffsetVertical]="headerInternalOffsetVertical"></app-site-header>
   <div class="site-page">
-    <app-site-page></app-site-page>
+    <app-site-page [offsetVertical]="headerInternalOffsetVertical"></app-site-page>
     <app-site-sidebar></app-site-sidebar>
   </div>
-  <app-site-footer></app-site-footer>
 </div>
+<app-site-footer></app-site-footer>

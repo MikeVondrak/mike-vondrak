@@ -2,30 +2,60 @@
   font-family: 'Agency FB';
   src: url('/assets/fonts/Agency-FB-Regular.ttf')  format('truetype');
 }
-
 @font-face {
   font-family: 'Gill Sans MT';
   src: url('/assets/fonts/Gill-Sans-MT.ttf')  format('truetype');
 }
-
 @font-face {
   font-family: 'Righteous';
   src: url('/assets/fonts/Righteous-Regular.ttf')  format('truetype');
 }
+@font-face {
+  font-family: 'Raleway';
+  src: url('/assets/fonts/Raleway-Regular.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  src: url('/assets/fonts/WixMadeforDisplay-Regular.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Cascadia Code';
+  src: url('/assets/fonts/CascadiaCodePL-Regular.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('/assets/fonts/SourceSansPro-Regular.otf')  format('opentype');
+}
+
 
 @media print {
   @font-face {
     font-family: 'Agency FB';
     src: url('/assets/fonts/Agency-FB-Regular.ttf')  format('truetype');
   }
-  
   @font-face {
     font-family: 'Gill Sans MT';
     src: url('/assets/fonts/Gill-Sans-MT.ttf')  format('truetype');
   }
-  
   @font-face {
     font-family: 'Righteous';
     src: url('/assets/fonts/Righteous-Regular.ttf')  format('truetype');
   }
+  @font-face {
+    font-family: 'Raleway';
+    src: url('/assets/fonts/Raleway-Regular.ttf')  format('truetype');
+  }
+  @font-face {
+    font-family: 'Wix Madefor Display';
+    src: url('/assets/fonts/WixMadeforDisplay-Regular.ttf')  format('truetype');
+  }
+  @font-face {
+    font-family: 'Cascadia Code';
+    src: url('/assets/fonts/CascadiaCodePL-Regular.ttf')  format('truetype');
+  }
+  @font-face {
+    font-family: 'Source Sans Pro';
+    src: url('/assets/fonts/SourceSansPro-Regular.otf')  format('opentype');
+  }
+  
 }

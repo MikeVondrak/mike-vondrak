@@ -33,7 +33,7 @@ h5 {
   @include utility.bpProp('font-size', 5.5vw);
 }
 p, a, button, ul, ol, div, span {
-  @include utility.bpProp('font-size', 4vw);
+  @include utility.bpProp('font-size', 5vw);
 }
 
 @media print {

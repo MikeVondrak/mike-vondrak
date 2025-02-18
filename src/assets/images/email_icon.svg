@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 52 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Artboard1" transform="matrix(1.01384,0,0,1.01275,-0.106576,-0.198174)">
+        <rect x="0.105" y="0.196" width="51.29" height="33.572" style="fill:none;"/>
+        <g id="Email" transform="matrix(0.119239,0,0,0.119367,-376.733,-629.931)">
+            <g>
+                <g id="Email1" serif:id="Email">
+                    <path d="M3578.99,5304.88L3578.99,5551.38L3173.3,5551.38L3173.3,5304.88L3368.61,5478.5C3372.9,5482.32 3379.38,5482.32 3383.67,5478.5L3578.99,5304.88ZM3376.14,5454.86L3203.12,5301.05L3549.17,5301.05L3376.14,5454.86Z" style="fill:rgb(255,220,0);"/>
+                    <g transform="matrix(1,0,0,-5.14286,0,32493.8)">
+                        <path d="M3374.55,5257.15C3375.62,5256.96 3376.7,5256.96 3377.77,5257.16L3566.8,5289.68L3184.59,5289.68L3374.55,5257.15Z" style="fill:rgb(255,220,0);"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

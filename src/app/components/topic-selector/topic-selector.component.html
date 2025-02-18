@@ -4,12 +4,12 @@
     [class.selectable]="onTopic(PageTopicsEnum.Portfolio)"
     (click)="selectTopic(PageTopicsEnum.History)"
   >
-    History
+    <span  class="current-page-indicator" [class.active]="onTopic(PageTopicsEnum.History)">History</span>
   </button>
   <button
     [class.selectable]="onTopic(PageTopicsEnum.History)" 
     (click)="selectTopic(PageTopicsEnum.Portfolio)"
   >
-    Portfolio
+    <span  class="current-page-indicator" [class.active]="onTopic(PageTopicsEnum.Portfolio)">Portfolio</span>
   </button>
 </div>

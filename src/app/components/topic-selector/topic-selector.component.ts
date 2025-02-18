@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { PageTopics } from '../../models/enums';
-import { topicSelectAnimation } from './topic-selector.animations';
+import { currentPageAnimation, topicSelectAnimation } from './topic-selector.animations';
 
 @Component({
   selector: 'app-topic-selector',
@@ -9,7 +9,7 @@ import { topicSelectAnimation } from './topic-selector.animations';
   templateUrl: './topic-selector.component.html',
   styleUrl: './topic-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush, // on push so template function doesn't run every CD cycle
-  animations: [topicSelectAnimation],
+  animations: [topicSelectAnimation, currentPageAnimation],
 })
 export class TopicSelectorComponent {
   @Output() currentTopic: EventEmitter<PageTopics> = new EventEmitter();

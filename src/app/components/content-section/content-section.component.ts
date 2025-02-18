@@ -13,16 +13,45 @@ export class ContentSectionComponent {
   @Input() titleTexts?: string[];
   @Input() subtitleTexts?: string[];
 
+  // Link format === link;Title Text;https://url.com
+  private linkDelimiter = ';';
+  private linkPrefix = 'link';
+
+  /**
+   * Check for link format 
+   * @param text 
+   * @returns Whether link prefix exists
+   */
   public isLink(text: string) {
-    const prefix = text.substring(0, 5);
-    return prefix === 'link:';
+    const prefix = text.substring(0, text.indexOf(this.linkDelimiter));
+    return prefix === this.linkPrefix;
   }
-  public getLinkName(text: string) {
-    return text.substring(5);
+  /**
+   * Parse UI text from link format
+   * @param text 
+   * @returns Section between first and second delimiters
+   */
+  public getLinkName(text: string): string | null {
+    return this.getLinkSection(text, 1);
   }
-  public getLink(text: string) {
-    const site = text.substring(5);
-    const url = `https://${site}`;
-    return url;
+  /**
+   * Parse URL from link format
+   * @param text 
+   * @returns Text after last delimiter
+   */
+  public getLink(text: string): string | null {
+    const site = text.substring(text.lastIndexOf(this.linkDelimiter));
+    return site;
+  }
+  /**
+   * Parse data from delimited string
+   * @param sectionNumber 
+   */
+  private getLinkSection(link: string, sectionNumber: number): string | null {
+    const parts = link.split(';');
+    if (sectionNumber < 0 || sectionNumber >= parts.length) {
+      return null;
+    }
+    return parts[sectionNumber];
   }
 }

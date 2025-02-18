@@ -1,4 +1,7 @@
+@use "sass:math";
 @use "../../../scss/lib";
+
+$offsetFactor: 5;
 
 @mixin floatLeft() {
   float: left;
@@ -28,9 +31,12 @@
 }
 
 :host {
-  overflow: hidden;
+  // NOTE: value is overwritten by component on init, comes from App component SCSS
+  //--offsetVerticalVar: 0vw;
   position: relative;
   display: block;
+  top: calc($offsetFactor * var(--offsetVerticalVar));
+  padding-top: calc(-0.9 * $offsetFactor * var(--offsetVerticalVar));
   background-image: 
     repeating-linear-gradient(
       -45deg,
@@ -39,8 +45,16 @@
       transparent 2px,
       transparent 10px
     );
+    background-color: lib.$color_white;
+    @include lib.media-breakpoint-gte(sm) {
+      border-radius: 0 0 5vw 5vw;
+    }
+    @include lib.media-breakpoint-gte(lg) {
+      border-radius: 0 0 2vw 2vw;
+    }
 
   app-topic-selector {
+    margin-bottom: 4vw;
     @media print {
       display: none;
     }

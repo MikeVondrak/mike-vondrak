@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentSectionComponent } from '../../content-section/content-section.component';
 import { TopicSelectorComponent } from '../../topic-selector/topic-selector.component';
@@ -14,12 +14,25 @@ import { sitePageAnimation } from './site-page.animations';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [sitePageAnimation]
 })
-export class SitePageComponent {
+export class SitePageComponent implements OnInit {
+  /**
+     * Layout property passed from App, specifies overlap of title element and "corner" section
+     */
+  @Input() offsetVertical: string = '';
+  /**
+   * CSS variable that maps to headerInternalVerticalOffset input
+   */
+  @HostBinding('style.--offsetVerticalVar') offsetVerticalProp = this.offsetVertical;
 
   public PageTopicsEnum = PageTopics;
   public currentTopic: PageTopics = PageTopics.History;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) { }
+
+  ngOnInit(): void {
+    this.offsetVerticalProp = this.offsetVertical;
+    console.log('PAGE: ', this.offsetVertical, this.offsetVerticalProp);
+  }
 
   public selectTopic(currentTopic: PageTopics) {
     this.currentTopic = currentTopic;

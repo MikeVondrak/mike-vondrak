@@ -1,97 +1,109 @@
 @use "./scss/lib";
 
+
 :host {
-  position: relative;
-  display: block;
+  // PRIMARY LAYOUT CONFIG
+  --headerInternalOffsetVertical: -10vw;
+  $pageWidths: (
+    "zero": 100vw,
+    "xs": 100vw,
+    "sm": 100vw,
+    "md": 94vw,
+    "lg": 82vw,
+    "xl": 64vw,
+    "ws": 58vw,
+    "hd": 52vw,
+    "2k": 50vw,
+    "4k": 48vw,
+  );
+// END CONFIG
+
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+height: 100%;
+
+.box-background {
+  pointer-events: none;
+  @extend %box-background;
+}
+
+.background-overlay {
+  position: absolute;
   width: 100%;
   height: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(167deg,
+      rgba(lib.$color_black, 0.2),
+      rgba(lib.$color_black, 0.3) 15%,
+      rgba(lib.$color_black, 0.4) 42%,
+      transparent 82%),
+    linear-gradient(222deg,
+      rgba(lib.$color_black, 0.2),
+      rgba(lib.$color_black, 0.3) 25%,
+      rgba(lib.$color_black, 0.4) 52%,
+      transparent 89%);
+}
 
-  .box-background {
+.page {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  @include lib.breakpointProp("width", $pageWidths);
+
+  app-site-header {
+    // Pass pointer events to controls potentially overlapped by header
     pointer-events: none;
-    @extend %box-background;
-  }
-
-  .page {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
+    z-index: 1;
     width: 100%;
-    min-height: 100vh;
-    background-image: linear-gradient(
-        167deg,
-        rgba(lib.$color_black, 0.2),
-        rgba(lib.$color_black, 0.3) 15%,
-        rgba(lib.$color_black, 0.4) 42%,
-        transparent 82%
-      ),
-      linear-gradient(
-        222deg,
-        rgba(lib.$color_black, 0.2),
-        rgba(lib.$color_black, 0.3) 25%,
-        rgba(lib.$color_black, 0.4) 52%,
-        transparent 89%
-      );
-    app-site-header {
-      pointer-events: none;
-      z-index: 1;
-      $headerOffest: (
-        "zero": -14vw,
-        "min": -14vw,
-        "xs": -11.5vw,
-        "sm": -18vw,
-        // layout change
-        "md": -20vw,
-        "lg": -14.85vw,
-        "xl": -13.25vw,
-        "ws": -9.75vw,
-        "hd": -8vw,
-        "2k": -6.25vw,
-        "4k": -4.2vw,
-      );
-      @include lib.breakpointProp("margin-bottom", $headerOffest);
+  }
+
+  .site-page {
+    z-index: 0;
+    position: relative;
+    flex: 1;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // align-items: flex-start;
+    //atop: var(--headerInternalOffsetVertical);
+
+    @include lib.media-breakpoint-gte(sm) {
+      // flex-direction: row;
     }
-    .site-page {
-      z-index: 0;
+
+    app-site-page {
       flex: 1;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      $pageWidths: (
-        "zero": 100vw,
-        "xs": 97.25vw,
-        "sm": 97vw,
-        "md": 85.75vw,
-        "lg": 72.25vw,
-        "xl": 64.25vw,
-        "ws": 54.25vw,
-        "hd": 45.4vw,
-        "2k": 38.9vw,
-        "4k": 34vw,
-      );
-      @include lib.breakpointProp("width", $pageWidths);
-
-      app-site-page {
-        flex: 1;
-        padding: 2vw 0 4vw;
-        background-color: lib.$color_white;
-        border-radius: 0 0 4vw 4vw;
-        @include lib.media-breakpoint-gte(lg) {
-          padding: 1vw 0 2vw;
-          border-radius: 0 0 2vw 2vw;
-        }
-      }
-
-      app-site-sidebar {
-        display: block;
-      }
+      //padding: 2vw 0 4vw;
+      // background-color: lib.$color_white;
+      // border-radius: 0 0 10vw 10vw;
+      // @include lib.media-breakpoint-gte(sm) {
+      //   border-radius: 0 0 5vw 5vw;
+      // }
+      // @include lib.media-breakpoint-gte(lg) {
+      //   //padding: 1vw 0 2vw;
+      //   border-radius: 0 0 2vw 2vw;
+      // }
     }
-    @media print {
-      app-site-footer {
-        display: none;
-      }
+
+    app-site-sidebar {
+      display: block;
     }
   }
+}
+
+app-site-footer {
+  width: 100%;
+
+  @media print {
+    app-site-footer {
+      display: none;
+    }
+  }
+}
 }

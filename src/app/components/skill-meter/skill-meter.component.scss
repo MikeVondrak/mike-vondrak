@@ -1,15 +1,15 @@
 @use "../../scss/lib";
 
-.skill-meter-container {
+.corner-element-container {
   position: relative;
-  padding: 2vw 3vw;
-  border-radius: 0vw 4vw 50% 50%;
+  padding: 2vw 3vw 1vw 1vw;
+  border-radius: 0vw 6vw 14vw 14vw;
   @include lib.media-breakpoint-gte(md) {
-    padding: 1vw 2vw;
-    border-radius: 0 2vw 50% 50%;
+    padding: 1vw 1vw 0.5vw 1.5vw;
+    border-radius: 0 4vw 10vw 10vw;
   }
   @include lib.media-breakpoint-gte(hd) {
-    padding: 0.75vw 1.5vw;
+    padding: 0.75vw 0.5vw 0.5vw 1.5vw;
   }
 
   //background-color: lib.$color_aqua_3;
@@ -22,170 +22,201 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
 
     a {
-      pointer-events: all;
-      @include lib.bpProp("font-size", 4vw);
-    }
-  }
-  .skill-meter-dial-container {
-    z-index: 0;
-    position: relative;
-    display: flex;
-    justify-content: center;
-
-    .skill-meter-dial {
       display: flex;
-      justify-content: center;
+      flex-direction: row;
+      justify-content: flex-start;
       align-items: center;
-      width: 34vw;
-      height: 34vw;
-      @include lib.media-breakpoint-gte(xs) {
-        width: 30vw;
-        height: 30vw;
-      }
-      @include lib.media-breakpoint-gte(sm) {
-        width: 32vw;
-        height: 32vw;
-      }
-      @include lib.media-breakpoint-gte(md) {
-        width: 26vw;
-        height: 26vw;
-      }
-      @include lib.media-breakpoint-gte(lg) {
-        width: 20vw;
-        height: 20vw;
-      }
-      @include lib.media-breakpoint-gte(xl) {
-        width: 18vw;
-        height: 18vw;
-      }
-      @include lib.media-breakpoint-gte(ws) {
-        width: 14vw;
-        height: 14vw;
-      }
-      @include lib.media-breakpoint-gte(hd) {
-        width: 12vw;
-        height: 12vw;
-      }
-      @include lib.media-breakpoint-gte("2k") {
-        width: 10vw;
-        height: 10vw;
-      }
-      @include lib.media-breakpoint-gte("4k") {
-        width: 8vw;
-        height: 8vw;
-      }
-      //background-color: lib.$color_gray_3;
-      border-radius: 50%;
+      pointer-events: all;
+      @include lib.bpProp("font-size", 3vw);
 
-      .skill-meter-ratings-bg {
-        position: absolute;
-        width: 60%;
-        height: 60%;
-        border-radius: 50%;
-        background-color: lib.$color_aqua_4;
+      img {
+        max-width: 1vw;
+        max-height: 1vw;
+        width: 100%;
+        height: 100%;
       }
-
-      .skill-meter-ratings {
-        width: 60%;
-        height: 60%;
-        border-radius: 50%;
-        $step: 15%;
-        background-image: radial-gradient(
-          circle,
-          lib.$color_aqua_4 0%,
-          lib.$color_aqua_4 $step,
-          lib.$color_aqua_3 $step,
-          lib.$color_aqua_3 $step * 2,
-          lib.$color_aqua_2 $step * 2,
-          lib.$color_aqua_2 $step * 3,
-          lib.$color_aqua_1 $step * 3,
-          lib.$color_aqua_1 $step * 4,
-          lib.$color_yellow $step * 4,
-          lib.$color_yellow 100%
-        );
-        // starting top-left
-        clip-path: polygon(
-          25% 10%,
-          65% 28%,
-          97% 50%,
-          68% 76%,
-          27% 86%,
-          12.5% 50%
-        );
-      }
-    }
-
-    .skill-rating-labels {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-
-      .skill-rating {
-        position: absolute;
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        @media screen {
-          color: lib.$color_aqua_1;
-        }
-        text-align: center;
-
-        &:nth-of-type(1) {
-          top: 4%;
-          left: 14%;
-          @media screen {
-            color: lib.$color_yellow;
-          }
-        }
-        &:nth-of-type(2) {
-          top: 4%;
-          right: 14%;
-        }
-        &:nth-of-type(3) {
-          top: 39%;
-          right: -3%;
-          @media screen {
-            color: lib.$color_yellow;
-          }
-        }
-        &:nth-of-type(4) {
-          top: 77%;
-          right: 16%;
-        }
-        &:nth-of-type(5) {
-          top: 77%;
-          left: 16%;
-        }
-        &:nth-of-type(6) {
-          top: 39%;
-          left: -3%;
-        }
-
-        > div {
-          display: flex;
-          justify-content: center;
-          span {
-            display: block;
-            padding-top: 0.25vw;
-            line-height: 1;
-            @include lib.bpProp("font-size", 2.75vw);
-            white-space: nowrap;
-
-            &.skill {
-              @include lib.bpProp("font-size", 2.25vw);
-              color: lib.$color_white;
-            }
-          }
-          span.dim {
-            color: lib.$color_gray_2;
-          }
+      > span {
+        margin-left: 0.4vw;
+        .at-sign {
+          font-size: 70%;
         }
       }
     }
   }
+  .logo-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0.5vw 0 1vw;
+
+    img {
+      width: 90%;
+    }
+  }
+
+  // .skill-meter-dial-container {
+  //   z-index: 0;
+  //   position: relative;
+  //   display: flex;
+  //   justify-content: center;
+
+  //   // .skill-meter-dial {
+  //   //   display: flex;
+  //   //   justify-content: center;
+  //   //   align-items: center;
+  //   //   width: 34vw;
+  //   //   height: 34vw;
+  //   //   @include lib.media-breakpoint-gte(xs) {
+  //   //     width: 30vw;
+  //   //     height: 30vw;
+  //   //   }
+  //   //   @include lib.media-breakpoint-gte(sm) {
+  //   //     width: 32vw;
+  //   //     height: 32vw;
+  //   //   }
+  //   //   @include lib.media-breakpoint-gte(md) {
+  //   //     width: 26vw;
+  //   //     height: 26vw;
+  //   //   }
+  //   //   @include lib.media-breakpoint-gte(lg) {
+  //   //     width: 20vw;
+  //   //     height: 20vw;
+  //   //   }
+  //   //   @include lib.media-breakpoint-gte(xl) {
+  //   //     width: 18vw;
+  //   //     height: 18vw;
+  //   //   }
+  //   //   @include lib.media-breakpoint-gte(ws) {
+  //   //     width: 14vw;
+  //   //     height: 14vw;
+  //   //   }
+  //   //   @include lib.media-breakpoint-gte(hd) {
+  //   //     width: 12vw;
+  //   //     height: 12vw;
+  //   //   }
+  //   //   @include lib.media-breakpoint-gte("2k") {
+  //   //     width: 10vw;
+  //   //     height: 10vw;
+  //   //   }
+  //   //   @include lib.media-breakpoint-gte("4k") {
+  //   //     width: 8vw;
+  //   //     height: 8vw;
+  //   //   }
+  //   //   //background-color: lib.$color_gray_3;
+  //   //   border-radius: 50%;
+
+  //   //   .skill-meter-ratings-bg {
+  //   //     position: absolute;
+  //   //     width: 60%;
+  //   //     height: 60%;
+  //   //     border-radius: 50%;
+  //   //     background-color: lib.$color_aqua_4;
+  //   //   }
+
+  //   //   .skill-meter-ratings {
+  //   //     width: 60%;
+  //   //     height: 60%;
+  //   //     border-radius: 50%;
+  //   //     $step: 15%;
+  //   //     background-image: radial-gradient(
+  //   //       circle,
+  //   //       lib.$color_aqua_4 0%,
+  //   //       lib.$color_aqua_4 $step,
+  //   //       lib.$color_aqua_3 $step,
+  //   //       lib.$color_aqua_3 $step * 2,
+  //   //       lib.$color_aqua_2 $step * 2,
+  //   //       lib.$color_aqua_2 $step * 3,
+  //   //       lib.$color_aqua_1 $step * 3,
+  //   //       lib.$color_aqua_1 $step * 4,
+  //   //       lib.$color_yellow $step * 4,
+  //   //       lib.$color_yellow 100%
+  //   //     );
+  //   //     // starting top-left
+  //   //     clip-path: polygon(
+  //   //       25% 10%,
+  //   //       65% 28%,
+  //   //       97% 50%,
+  //   //       68% 76%,
+  //   //       27% 86%,
+  //   //       12.5% 50%
+  //   //     );
+  //   //   }
+  //   // }
+
+  //   // .skill-rating-labels {
+  //   //   position: absolute;
+  //   //   top: 0;
+  //   //   bottom: 0;
+  //   //   left: 0;
+  //   //   right: 0;
+
+  //   //   .skill-rating {
+  //   //     position: absolute;
+  //   //     display: inline-flex;
+  //   //     flex-direction: column;
+  //   //     justify-content: flex-start;
+  //   //     @media screen {
+  //   //       color: lib.$color_aqua_1;
+  //   //     }
+  //   //     text-align: center;
+
+  //   //     &:nth-of-type(1) {
+  //   //       top: 4%;
+  //   //       left: 14%;
+  //   //       @media screen {
+  //   //         color: lib.$color_yellow;
+  //   //       }
+  //   //     }
+  //   //     &:nth-of-type(2) {
+  //   //       top: 4%;
+  //   //       right: 14%;
+  //   //     }
+  //   //     &:nth-of-type(3) {
+  //   //       top: 39%;
+  //   //       right: -3%;
+  //   //       @media screen {
+  //   //         color: lib.$color_yellow;
+  //   //       }
+  //   //     }
+  //   //     &:nth-of-type(4) {
+  //   //       top: 77%;
+  //   //       right: 16%;
+  //   //     }
+  //   //     &:nth-of-type(5) {
+  //   //       top: 77%;
+  //   //       left: 16%;
+  //   //     }
+  //   //     &:nth-of-type(6) {
+  //   //       top: 39%;
+  //   //       left: -3%;
+  //   //     }
+
+  //   //     > div {
+  //   //       display: flex;
+  //   //       justify-content: center;
+  //   //       span {
+  //   //         display: block;
+  //   //         padding-top: 0.25vw;
+  //   //         line-height: 1;
+  //   //         @include lib.bpProp("font-size", 2.75vw);
+  //   //         white-space: nowrap;
+
+  //   //         &.skill {
+  //   //           @include lib.bpProp("font-size", 2.25vw);
+  //   //           color: lib.$color_white;
+  //   //         }
+  //   //       }
+  //   //       span.dim {
+  //   //         color: lib.$color_gray_2;
+  //   //       }
+  //   //     }
+  //   //   }
+  //   // }
+  // }
 }

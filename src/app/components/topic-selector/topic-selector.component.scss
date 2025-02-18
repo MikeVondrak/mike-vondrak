@@ -1,11 +1,15 @@
 @use "../../scss/lib";
 
+$topicSelectorWidth: 88vw;
+
 %buttonProps {
-  width: 18vw;
-  padding: 0.25vw;
+  width: calc($topicSelectorWidth * 0.5);
+  padding: 1.25vw;
+
   @include lib.media-breakpoint-gte(lg) {
     width: 14vw;
   }
+
   @include lib.media-breakpoint-gte(ws) {
     width: 10vw;
   }
@@ -16,23 +20,24 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+
   .container {
-    overflow: hidden;
     z-index: 1;
     position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-bottom: 1vw;
-    border-radius: 2vw;
+    border-radius: 23vw;
     background-color: lib.$color_gray_4;
     box-shadow: 0px 2px 8px -2px lib.$color_black;
+    width: $topicSelectorWidth;
 
-    width: 35.8vw;
     @include lib.media-breakpoint-gte(lg) {
       width: 27.8vw;
       border-radius: 1vw;
     }
+
     @include lib.media-breakpoint-gte(ws) {
       width: 19.8vw;
     }
@@ -42,29 +47,68 @@
       position: absolute;
       @extend %buttonProps;
       height: 101%;
-      background-color: lib.$color_aqua_2;
       left: 50%;
+      border-radius: 3vw 5vw 3vw 5vw;
+      background-color: lib.$color_aqua_2;
       //box-shadow: 0px 4px 10px -2px lib.$color_black;
     }
 
     button {
       position: relative;
+      display: flex;
+      justify-content: center;
       z-index: 1;
       @extend %buttonProps;
       background-color: transparent;
       transition: color 0.4s ease-in-out;
 
       &.selectable {
-        color: lib.$color_orange;
+        color: lib.$color_cta;
       }
 
       &:first-of-type {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
+
       &:last-of-type {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
+      }
+
+      $pageIndicatorSize: clamp(1rem, 0.7vw, 3rem);
+
+      .current-page-indicator {
+        z-index: 0;
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        &::before {
+          content: '';
+          z-index: -1;
+          opacity: 0;
+          position: absolute;
+          display: block;
+          width: 0;
+          height: 0;
+          bottom: -10%;
+          // Center absolute position pseudo-element
+          left: 0;
+          right: 0;
+          margin-inline: auto;
+          border-left: $pageIndicatorSize solid transparent;
+          border-right: $pageIndicatorSize solid transparent;
+          border-top: $pageIndicatorSize solid lib.$color_gray_4;
+          transition: bottom 0.7s ease, opacity 0.2s ease-in;
+        }
+
+        &.active {
+          &::before {
+            opacity: 1;
+            bottom: -70%;
+          }
+        }
       }
     }
   }

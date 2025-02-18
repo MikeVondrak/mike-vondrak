@@ -24,14 +24,15 @@
     }
     
     background-color: lib.$color_gray_1;
-    //box-shadow: 0px 2px 10px 0px #000;
 
     .title-row {
       display: flex;
       justify-content: space-between;
       width: 100%;
-      color: lib.$color_aqua_3;
-      font-weight: bold;
+      color: lib.$color_gray_3;
+      span {
+        font-family: 'Source Sans Pro';
+      }
       span:last-child {
         text-align: right;
       }
@@ -40,7 +41,8 @@
         color: lib.$color_gray_3;
         span {
           font-weight: normal;
-          @include lib.bpProp('font-size', 3vw);
+          font-style: italic;
+          @include lib.bpProp('font-size', 4vw);
           &:last-child {
             text-align: right;
           }

@@ -2,13 +2,26 @@
 
 :host {
   padding: 2vw;
-  @include lib.bpProp('width', 34vw);
+  //@include lib.bpProp('width', 42vw);
+  width: 33vw;
+  @include lib.media-breakpoint-gte(sm) {
+    width: 28vw;
+  }
+  @include lib.media-breakpoint-gte(md) {
+    width: 25vw;
+  }
   border-bottom-right-radius: 4vw;
   @include lib.media-breakpoint-gte(lg) {
+    width: 22vw;
     padding: 0vw 1.5vw 1.5vw;
     border-bottom-right-radius: 2vw;
   }
   @include lib.media-breakpoint-gte(ws) {
+    width: 12vw;
+    padding: 0vw 1vw 1vw;
+  }
+  @include lib.media-breakpoint-gte(2k) {
+    width: 12vw;
     padding: 0vw 1vw 1vw;
   }
   @include lib.bpProp('padding-top', 38vw);
