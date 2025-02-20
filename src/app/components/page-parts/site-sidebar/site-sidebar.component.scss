@@ -117,6 +117,10 @@ $sitePageOffsetScaling: 5;
         span {
           white-space: nowrap;
           @include lib.bpProp('font-size', 7vw);
+
+          &.separator {
+            color: lib.$color_aqua_2;
+          }
         }
       }
     }
