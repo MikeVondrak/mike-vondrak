@@ -8,6 +8,7 @@
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   margin: 0;
@@ -17,11 +18,65 @@ body {
 
 body {
   color: colors.$color_gray_4;
+
   h1,
   h2,
   h3,
   h4,
   h5 {
+    color: colors.$color_gray_4;
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4vw;
+    margin: 0;
+    padding: 4vw 0;
+
+    li {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      @include utility.media-breakpoint-gte(lg) {
+        padding-bottom: 0.75vw;
+      }
+
+      // Custom li bullet
+      &::before {
+        content: "\25B6";
+        position: absolute;
+        display: block;
+        top: 0;
+        left: -8vw;
+        color: colors.$color_aqua_1;
+
+        @include utility.media-breakpoint-gte(sm) {
+          
+        }
+
+        @include utility.media-breakpoint-gte(md) {
+
+        }
+
+        @include utility.media-breakpoint-gte(lg) {
+          
+        }
+
+        @include utility.media-breakpoint-gte(xl) {
+          
+        }
+
+        @include utility.media-breakpoint-gte(ws) {
+        
+        }
+
+        @include utility.media-breakpoint-gte(hd) {
+          
+        }
+      }
+    }
   }
 
   a {
@@ -30,9 +85,11 @@ body {
     text-decoration: none;
     transition: border 0.4s;
     @extend %textShadow;
+
     &:hover {
       border-bottom: 1px solid rgba(colors.$color_cta, 1);
     }
+
     &:active {
       background-color: colors.$color_yellow;
     }
@@ -46,13 +103,16 @@ body {
     transition: background-color 0.2s ease-out;
     @extend %textShadow;
     border-radius: 1vw;
+
     @include utility.media-breakpoint-gte(md) {
       padding: 0.75vw 1.5vw;
     }
+
     @include utility.media-breakpoint-gte(lg) {
       padding: 0.75vw 1.5vw;
       border-radius: 0.5vw;
     }
+
     @include utility.media-breakpoint-gte(xl) {
       padding: 0.5vw 1vw;
     }

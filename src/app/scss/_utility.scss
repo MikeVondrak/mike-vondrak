@@ -324,6 +324,24 @@ $scalars: (
   @return $unitless;
 }
 
+@mixin floatLeft() {
+  float: left;
+  padding: 2vw 2vw 1vw 0vw;
+
+  @include media-breakpoint-gte(lg) {
+    padding: 1vw 1vw 0.5vw 0vw;
+  }
+}
+
+@mixin floatRight() {
+  float: right;
+  width: 40%;
+  padding: 2vw 0 1vw 1vw;
+
+  @include media-breakpoint-gte(lg) {
+    padding: 1vw 0 0.5vw 0.5vw;
+  }
+}
 
 //
 // Placeholders

@@ -1,10 +1,22 @@
 @use '../../../scss/lib';
 
+// 5 === scaling from site-page offset
+// TODO: make an input
+$sitePageOffsetScaling: 5;
+
 :host {
-  padding: 2vw;
-  //@include lib.bpProp('width', 42vw);
-  width: 33vw;
+  position: relative;
+  display: block;
+  top: calc($sitePageOffsetScaling * var(--offsetVerticalVar));
+  width: 100vw;
+  padding: 4vw;
+  background-color: lib.$color_aqua_4;
+  color: lib.$color_white;
+  box-shadow: 0px 10px 10px 4px lib.$color_black;
+  font-family: 'Agency FB';
+
   @include lib.media-breakpoint-gte(sm) {
+    // Layout change
     width: 28vw;
   }
   @include lib.media-breakpoint-gte(md) {
@@ -24,61 +36,87 @@
     width: 12vw;
     padding: 0vw 1vw 1vw;
   }
-  @include lib.bpProp('padding-top', 38vw);
-  background-color: lib.$color_aqua_4;
-
-  color: lib.$color_white;
-  font-family: 'Agency FB';
 
   section {
-    @include lib.bpProp('margin-bottom', 10vw);
+    @include lib.bpProp('margin-bottom', 16vw);
 
+    &.two-column {
+      padding: 0 12vw 4vw;
+      ul li span {
+        &:last-child {
+          width: 30%;
+          text-align: left;
+        }
+      }
+    }
+    &.center-span-list {
+      flex-direction: column;
+      align-items: center;
+      ul {
+        li {
+          position: relative;
+          justify-content: center;
+          gap: 3vw;
+
+          span {
+            &::after {
+              content: "\25CF";
+              padding-left: 2vw;
+              color: lib.$color_aqua_2;
+            }
+            &:last-child {
+              &::after {
+                content: "";
+              }
+            }
+          }
+        }
+      }
+    }
+    &.center-list {
+      flex-direction: column;
+      align-items: center;
+      ul {
+
+        li {
+          position: relative;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 3vw; 
+        }
+      }
+    }
+    
     .asterisk {
-      @include lib.bpProp('font-size', 2.5vw);
+      //@include lib.bpProp('font-size', 2.5vw);
       text-align: center;
       color: lib.$color_gray_3;
     }
     h2 {
-      @include lib.bpProp('margin-bottom', 3vw);
+      @include lib.bpProp('margin-bottom', 6vw);
       color: lib.$color_aqua_1;
-      @include lib.bpProp('font-size', 5vw);
       text-align: center;
       text-transform: uppercase;
     }
     ul {
-      list-style-type: none;
+      display: flex;
       margin: 0;
       padding: 0;
+      @include lib.bpProp('gap', 2vw);
       li {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         gap: 1vw;
         margin: 0;
+        &::before {
+          content: '';
+        }
+        
         span {
-          @include lib.bpProp('font-size', 3vw);
-        }
-
-        .subtext {
-          color: lib.$color_gray_2;
-          @include lib.bpProp('font-size', 2.5vw);
-        }
-      }
-    }
-    &.technology {
-      ul {
-        li {
-          justify-content: center;
-          gap: 0.5vw;
-        }
-      }
-    }
-    &.education {
-      text-align: center;
-      ul {
-        li {
-          gap: 0.25vw;
-          flex-direction: column;
+          white-space: nowrap;
+          @include lib.bpProp('font-size', 7vw);
         }
       }
     }

@@ -3,28 +3,13 @@
 
 $offsetFactor: 5;
 
-@mixin floatLeft() {
-  float: left;
-  padding: 2vw 2vw 1vw 0vw;
-  @include lib.media-breakpoint-gte(lg) {
-    padding: 1vw 1vw 0.5vw 0vw;
-  }
-}
-
-@mixin floatRight() {
-  float: right;
-  width: 40%;
-  padding: 2vw 0 1vw 1vw;
-  @include lib.media-breakpoint-gte(lg) {
-    padding: 1vw 0 0.5vw 0.5vw;
-  }
-}
-
 %pagePadding {
-  padding: 1vw 4vw 3vw;
+  padding: 4vw 8vw 3vw;
+
   @include lib.media-breakpoint-gte(lg) {
     padding: 0.75vw 3vw 2vw;
   }
+
   @include lib.media-breakpoint-gte(ws) {
     padding: 0.5vw 2vw 1vw;
   }
@@ -37,28 +22,30 @@ $offsetFactor: 5;
   display: block;
   top: calc($offsetFactor * var(--offsetVerticalVar));
   padding-top: calc(-0.9 * $offsetFactor * var(--offsetVerticalVar));
-  background-image: 
-    repeating-linear-gradient(
-      -45deg,
+  background-image:
+    repeating-linear-gradient(-45deg,
       rgba(lib.$color_black, 0.05),
       rgba(lib.$color_black, 0.05) 2px,
       transparent 2px,
-      transparent 10px
-    );
-    background-color: lib.$color_white;
-    @include lib.media-breakpoint-gte(sm) {
-      border-radius: 0 0 5vw 5vw;
-    }
-    @include lib.media-breakpoint-gte(lg) {
-      border-radius: 0 0 2vw 2vw;
-    }
+      transparent 10px);
+  background-color: lib.$color_white;
+
+  @include lib.media-breakpoint-gte(sm) {
+    border-radius: 0 0 5vw 5vw;
+  }
+
+  @include lib.media-breakpoint-gte(lg) {
+    border-radius: 0 0 2vw 2vw;
+  }
 
   app-topic-selector {
     margin-bottom: 4vw;
+
     @media print {
       display: none;
     }
   }
+
   @media print {
     margin-top: 4vw;
   }
@@ -72,6 +59,7 @@ $offsetFactor: 5;
       position: relative;
       display: block;
       border-radius: 0 0 4vw 4vw;
+
       @include lib.media-breakpoint-gte(lg) {
         border-radius: 0 0 2vw 2vw;
       }
@@ -80,135 +68,27 @@ $offsetFactor: 5;
         margin: 0;
         padding: 3vw 4vw 5vw;
         text-align: center;
+
         @include lib.media-breakpoint-gte(lg) {
           padding: 2vw 3vw 3vw;
         }
+
         @include lib.media-breakpoint-gte(ws) {
           padding: 1.5vw 2vw 2.5vw;
         }
+
         @include lib.media-breakpoint-gte(hd) {
           padding: 1.25vw 1.75vw 2vw;
         }
+
         @include lib.media-breakpoint-gte("4k") {
           padding: 1vw 1.5vw 1.75vw;
         }
       }
+
       app-content-section {
         display: block;
         padding-bottom: 2vw;
-        background-image: linear-gradient(180deg, lib.$color_white 95%, transparent);
-        .summary {
-          @extend %pagePadding;
-          padding-bottom: 0;          
-          .highlight {
-            font-weight: bold;
-          }
-          img {
-            @include floatRight();
-            &.mike-vondrak {
-              @include floatLeft();
-              width: 30%;
-            }
-            &.sbsco {
-              width: 30%;
-            }
-            &.pointing-poker {
-              @include floatLeft();
-              width: 60%;
-            }
-            &.dayna-safferstein {
-              width: 50%;
-            }
-          }
-        }
-
-        .technology {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
-          align-items: center;
-          gap: 2vw;
-          width: 90%;
-          margin-left: 5%;
-          @extend %pagePadding;
-          span {
-            @include lib.bpProp("font-size", 2.5vw);
-          }
-          span:first-of-type {
-            font-weight: bold;
-          }
-        }
-
-        ul {
-          margin: 0;
-          @extend %pagePadding;
-          list-style-type: none;
-
-          
-          li {
-            position: relative;
-            margin-bottom: 1.5vw;
-
-            ul {
-              margin-bottom: 0;
-              padding-right: 0;
-              padding-bottom: 0;
-
-              li {
-                margin-bottom: 0;
-                padding-bottom: 1.5vw;
-                @include lib.media-breakpoint-gte(lg) {
-                  padding-bottom: 0.75vw;
-                }
-                &::before {
-                  content: "\2b9e";
-                  position: absolute;
-                  display: block;
-                  top: 0vw;
-                  left: -3.25vw;
-                  color: lib.$color_aqua_1;
-                  @include lib.media-breakpoint-gte(sm) {
-                    left: -3vw;
-                  }
-                  @include lib.media-breakpoint-gte(md) {
-                    left: -3vw;
-                  }
-                  @include lib.media-breakpoint-gte(lg) {
-                    left: -2.5vw;
-                  }
-                  @include lib.media-breakpoint-gte(xl) {
-                    left: -2vw;
-                  }
-                  @include lib.media-breakpoint-gte(ws) {
-                    left: -1.75vw;
-                  }
-                  @include lib.media-breakpoint-gte(hd) {
-                    left: -1.5vw;
-                  }
-                }
-              }
-            }
-
-            
-            p {
-              margin: 0;
-              padding: 1vw 0vw;
-              @include lib.media-breakpoint-gte(xl) {
-                padding: 0.5vw 0vw;
-              }
-            }
-            .title {
-              font-weight: bold;
-              color: lib.$color_aqua_2;
-            }
-          }
-
-          &.parent-list {
-            > li::before {
-              content: none;
-            }
-          }
-        }
       }
     }
   }

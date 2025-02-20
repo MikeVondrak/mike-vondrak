@@ -1,292 +1,94 @@
 <app-topic-selector (currentTopic)="selectTopic($event)"></app-topic-selector>
 <div class="topics-container" [@slideHorizontal]="currentTopic">
-  <div
-    *ngIf="onTopic(PageTopicsEnum.History)"
-    class="topic-container"
-    [class.showing]="onTopic(PageTopicsEnum.History)"
-  >
-    <app-content-section
-      [titleTexts]="['Charter Communications', 'Lead Software Engineer']"
-      [subtitleTexts]="['Denver CO', 'January 2018 - Present']"
-    >
-      <div class="summary">
-        <p>
-          <a href="https://www.charter.com" class="highlight"
-            >Charter Communications</a
-          >
-          is a Fortune 500 company that provides cable TV, internet, telephone
-          and mobile phone services nation-wide.
-        </p>
-        <p>
-          I lead a team of developers maintaining parts of the residential and
-          small-to-medium business websites. I deal primarily with the buy-flow
-          purchasing aspects of acquiring or upgrading services.
-        </p>
-      </div>
-      <div class="technology">
-        <span>Technology</span>
-        <span
-          >Angular 15+, RxJs, NgRx, HTML5, SCSS, GraphQL, GitLab, LucidChart,
-          Postman, Charles, Jira, Confluence, ARIA</span
-        >
-      </div>
-      <ul class="parent-list">
+  <div *ngIf="onTopic(PageTopicsEnum.History)" class="topic-container"
+    [class.showing]="onTopic(PageTopicsEnum.History)">
+    <app-content-section [titleTexts]="['Charter Communications', 'Lead Software Engineer']"
+      [subtitleTexts]="['Denver CO', 'January 2018 - Present']">
+      <ul class="content-container">
         <li>
-          <p class="title">Leadership</p>
-          <ul>
-            <li>
-              I have led teams of between 2 and 8 developers through the entire
-              development life-cycle, from requirements to a deployed product.
-            </li>
-            <li>
-              I interviewed and hired a team of 5 senior developers, handling
-              screening resumes through deep technical and cultural reviews.
-            </li>
-            <li>
-              I developed a series of tools for our interview process, including
-              a Stackblitz site for live coding.
-            </li>
-          </ul>
+          Lead an 8-member development team maintaining and enhancing the
+          front-end of residential and small-to-medium business websites,
+          ensuring seamless user experience and scalability
         </li>
         <li>
-          <p class="title">Ingenuity</p>
-          <ul>
-            <li>
-              I pioneered a planning process and documentation to avoid churn
-              between departments, and help the Devs & QE's operate from a
-              single source of truth.
-            </li>
-          </ul>
+          Develop robust code that laid the foundation for the current system,
+          significantly reducing development time from weeks to hours and
+          enabling rapid iterations and improvements
         </li>
         <li>
-          <p class="title">Quality</p>
-          <ul>
-            <li>
-              <span>I helped architect a JSON-based CMS system </span>to allow
-              us to make changes to copy, images, and page layouts in a shorter
-              time frame using a less restrictive pipeline.
-              <p>
-                This system was adopted throughout our department and continues
-                to serve as the foundation for new work.
-              </p>
-            </li>
-          </ul>
+          Design and implement structured interview processes, including a
+          Stackblitz site for live coding assessments, leading to a 100%
+          retention rate after six months
         </li>
         <li>
-          <p class="title">Flexibility</p>
-          <ul>
-            <li>
-              I worked with a large enterprise application through several
-              restructurings including a monorepo and micro-frontends.
-            </li>
-            <li>
-              I operated in a constantly shifting environment, adapting to new
-              team structures and project priorities regularly.
-            </li>
-          </ul>
+          Create and maintain detailed documentation to communicate planned
+          development processes to the team and provide regular status updates
+          to stakeholders, resulting in a 10% average reduction in development time
         </li>
         <li>
-          <p class="title">Passion</p>
-          <ul>
-            <li>
-              I was a multiple-time internal award winner for excellence in work
-              and going above-and-beyond.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p class="title">Motivation</p>
-          <ul>
-            <li>
-              I was converted from a contractor to a full-time employee,
-              promoted from Mid to Senior software engineer, and then promoted
-              to Lead of a team of developers.
-            </li>
-          </ul>
+          Promote code quality, best practices, and proactively address technical
+          debt to enhance maintainability and streamline the development processes
         </li>
       </ul>
     </app-content-section>
-    <app-content-section
-      [titleTexts]="['HŌM Solutions', 'Web Developer']"
-      [subtitleTexts]="['Denver CO', 'March 2014 - March 2017']"
-    >
-      <div class="summary">
-        <p>
-          <a href="https://homsolutions.com" class="highlight">HŌM Solutions</a>
-          is a home improvement subcontractor that works with Home Depot and
-          other retailers to provide installation and maintenance scheduling
-          services.
-        </p>
-        <p>
-          I was the frontend developer on a team of 4, building and maintaining
-          the internal customer management and scheduling app, as well as a
-          public-facing web app allowing external customers to schedule their
-          service.
-        </p>
-      </div>
-      <div class="technology">
-        <span>Technology</span>
-        <span
-          >C# .NET 4.5, MVC 3, HTML5, CSS3, jQuery, SQL, Git, SASS, Knockout,
-          Angular 2</span
-        >
-      </div>
-      <ul class="parent-list">
-        <li>
-          <p class="title">Leadership</p>
-          <ul>
-            <li>
-              I guided the look and feel of both internal apps and a public
-              facing website.
-            </li>
-            <li>
-              I built mockups to address functionality and interviewed users to
-              find pain points and ideas for improvement.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p class="title">Ingenuity</p>
-          <ul>
-            <li>
-              I designed and built a public-facing web app to allow customers to
-              schedule their appointments online using .NET, Razor and Knockout.
-            </li>
-            <li>
-              I also created custom UI components to improve usability using
-              HTML5 and jQuery.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p class="title">Quality</p>
-          <ul>
-            <li>
-              I redesigned a job scheduling calendar and implemented it in .NET
-              and Razor, modernizing the design and allowing users to understand
-              status from a summary view.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p class="title">Planning</p>
-          <ul>
-            <li>
-              I helped create development plans and implementation schedules for
-              product features.
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </app-content-section>
-    <app-content-section
-      [titleTexts]="['Experian', 'Web Developer']"
-      [subtitleTexts]="['Denver CO', 'August 2012 - February 2014']"
-    >
-      <div class="summary">
-        <p>
-          <a href="https://experian.com" class="highlight">Experian</a>
-          is a Fortune 500 company that is one of the biggest credit agencies
-          operating globally.
-        </p>
-        <p>
-          I worked on the frontend of a variety of public-facing websites
-          managed by Experian in the UK services division.
-        </p>
-      </div>
-      <div class="technology">
-        <span>Technology</span>
-        <span
-          >C# .NET 3.5, MVC 3, HTML5, CSS3, jQuery, Selenium, Tridion CMS, SASS,
-          TFS</span
-        >
-      </div>
-      <ul class="parent-list">
-        <li>
-          <p class="title">Leadership</p>
-          <ul>
-            <li>
-              I helped lead and organize frontend development for a distributed
-              development team in a redesign of CreditExpert.co.uk.
-            </li>
-            <li>
-              I was responsible for creating a high-level design plan for
-              development across multiple simultaneous projects.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p class="title">Ingenuity</p>
-          <ul>
-            <li>
-              I constructed Selenium tests to allow automated testing of user
-              journeys.
-            </li>
-          </ul>
-          <ul>
-            <li>
-              I ported .NET views into a CMS framework to provide
-              business-editable content.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p class="title">Quality</p>
-          <ul>
-            <li>
-              I created technical documents for knowledge transfer of
-              undocumented legacy products and processes.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p class="title">Flexibility</p>
-          <ul>
-            <li>
-              I supported undocumented legacy .NET 1.1 / VB5 code fixing
-              high-priority bugs to avoid compliance failures and fines.
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </app-content-section>
-    <app-content-section [titleTexts]="['Past Employment', '2005 - 2012']">
-      <div class="summary">
-        <p>
-          An extended work history is available upon request, but to summarize:
-        </p>
-      </div>
+    <app-content-section [titleTexts]="['HŌM Solutions', 'Web Developer']"
+      [subtitleTexts]="['Denver CO', 'March 2014 - March 2017']">
       <ul>
         <li>
-          <p class="title">Contracting</p>
-          <p>
-            In 2010 I got into web development and started doing contracts,
-            primarily frontend and heavy CSS.
-          </p>
+          Supervised front-end development for a team delivering an internal customer
+          management and scheduling tool, ensuring an intuitive user interface and
+          seamless functionality to meet organizational needs
         </li>
         <li>
-          <p class="title">Medical Simulation Corporation</p>
-          <p>
-            After college I worked for 5 years in C++ for a medical simulation
-            company.
-          </p>
+          Designed and expanded a public-facing web application enabling customers to
+          schedule appointments online, reducing scheduling-related calls by 11% and
+          improving overall customer convenience
+        </li>
+
+        <li>
+          Created mock-ups for new designs and to address usability issues, improving
+          user experience and ensuring alignment with design goals
         </li>
         <li>
-          <p class="title">Nanocom</p>
-          <p>
-            During college I did an internship at a small company in Virginia
-            building a Visual Basic based video-chat product (yes, really).
-          </p>
+          Conducted user interviews to gather feedback, to enhance customer satisfaction,
+          and identify key areas for improvement in product functionality and usability
+        </li>
+        <li>
+          Developed comprehensive project plans and implementation schedules to ensure
+          timely delivery and alignment with strategic goals
+        </li>
+      </ul>
+    </app-content-section>
+    <app-content-section [titleTexts]="['Experian', 'Web Developer']"
+      [subtitleTexts]="['Denver CO', 'August 2012 - February 2014']">
+      <ul>
+        <li>
+          Led and organized front-end development for a distributed team during the 
+          redesign of CreditExpert.co.uk, ensuring seamless collaboration, adherence to 
+          project timelines, and delivery of a modernized user interface
+        </li>
+        <li>
+          Developed Selenium tests to automate the testing of user journeys, improving 
+          test coverage and ensuring a reliable user experience
+        </li>
+        <li>
+          Authored technical documentation to facilitate knowledge transfer for previously 
+          undocumented legacy products and processes, ensuring continuity and reducing 
+          on-boarding time for new team members
+        </li>
+        <li>
+          Maintained and supported undocumented legacy .NET 1.1 and VB Script code, resolving 
+          critical bugs to prevent compliance failures and associated fines
         </li>
       </ul>
     </app-content-section>
   </div>
-
-  <div
-    *ngIf="onTopic(PageTopicsEnum.Portfolio)"
-    class="topic-container"
-    [class.showing]="onTopic(PageTopicsEnum.Portfolio)"
-  >
+  <!-- 
+    Portfolio Page
+    TODO: move to separate router outlet
+  -->
+  <div *ngIf="onTopic(PageTopicsEnum.Portfolio)" class="topic-container"
+    [class.showing]="onTopic(PageTopicsEnum.Portfolio)">
     <h2>Portfolio</h2>
     <app-content-section [titleTexts]="['Dive Inn', 'link:diveinndenver.com']">
       <div class="summary">
@@ -307,14 +109,9 @@
       </div>
     </app-content-section>
 
-    <app-content-section
-      [titleTexts]="['Mike Vondrak', 'link:mikevondrak.com']"
-    >
+    <app-content-section [titleTexts]="['Mike Vondrak', 'link:mikevondrak.com']">
       <div class="summary">
-        <img
-          class="mike-vondrak"
-          src="assets/images/portfolio/MikeVondrak.svg"
-        />
+        <img class="mike-vondrak" src="assets/images/portfolio/MikeVondrak.svg" />
         <p>My resume as an Angular website.</p>
         <p>
           I built this to get up to speed with Angular 17 and practice rapid
@@ -327,9 +124,7 @@
       </div>
     </app-content-section>
 
-    <app-content-section
-      [titleTexts]="['Solved by Software', 'link:solvedbysoftwareco.com']"
-    >
+    <app-content-section [titleTexts]="['Solved by Software', 'link:solvedbysoftwareco.com']">
       <div class="summary">
         <img class="sbsco" src="assets/images/portfolio/SolvedBySoftware.svg" />
         <p>
@@ -348,14 +143,9 @@
       </div>
     </app-content-section>
 
-    <app-content-section
-      [titleTexts]="['Pointing Poker', 'link:pointingpokeronline.com']"
-    >
+    <app-content-section [titleTexts]="['Pointing Poker', 'link:pointingpokeronline.com']">
       <div class="summary">
-        <img
-          class="pointing-poker"
-          src="assets/images/portfolio/PointingPoker.svg"
-        />
+        <img class="pointing-poker" src="assets/images/portfolio/PointingPoker.svg" />
         <p>A tool for estimating the complexity of software tasks.</p>
         <p>
           I designed and built the UI, and helped with some of the backend
@@ -368,21 +158,14 @@
       </div>
       <div class="technology">
         <span>Technology</span>
-        <span
-          >Angular 13, RxJs, HTML5, SCSS, NgRx, GraphQL, Hasura, Heroku,
-          GitHub</span
-        >
+        <span>Angular 13, RxJs, HTML5, SCSS, NgRx, GraphQL, Hasura, Heroku,
+          GitHub</span>
       </div>
     </app-content-section>
 
-    <app-content-section
-      [titleTexts]="['Dayna Safferstein', 'link:daynasafferstein.com']"
-    >
+    <app-content-section [titleTexts]="['Dayna Safferstein', 'link:daynasafferstein.com']">
       <div class="summary">
-        <img
-          class="dayna-safferstein"
-          src="assets/images/portfolio/DaynaSafferstein.png"
-        />
+        <img class="dayna-safferstein" src="assets/images/portfolio/DaynaSafferstein.png" />
         <p>The portfolio site of a designer friend of mine.</p>
         <p>
           I built the animated grid for the main page and integrated it into a

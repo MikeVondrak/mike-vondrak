@@ -1,56 +1,126 @@
   @use '../../scss/lib';
 
-:host {
-  display: block;
+  %pagePadding {
+    padding: 0 8vw 4vw;
 
-  .title-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.5vw;
-    width: 100%;
-    padding: 2vw 2vw;
-    border-radius: 4vw 4vw 0 0;
     @include lib.media-breakpoint-gte(lg) {
-      gap: 0.25vw;
-      padding: 1vw 2vw;
-      border-radius: 2vw 2vw 0 0;
+      padding: 0.75vw 3vw 2vw;
     }
-    @include lib.media-breakpoint-gte('2k') {
-      gap: 0.125vw;
-      padding: 0.75vw 1vw;
-      border-radius: 1vw 1vw 0 0;
-    }
-    
-    background-color: lib.$color_gray_1;
 
-    .title-row {
+    @include lib.media-breakpoint-gte(ws) {
+      padding: 0.5vw 2vw 1vw;
+    }
+  }
+
+  :host {
+    display: block;
+
+    .title-container {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.5vw;
       width: 100%;
-      color: lib.$color_gray_3;
-      span {
-        font-family: 'Source Sans Pro';
+      padding: 2vw 4vw;
+      border-radius: 4vw 4vw 0 0;
+
+      @include lib.media-breakpoint-gte(lg) {
+        gap: 0.25vw;
+        padding: 1vw 2vw;
+        border-radius: 2vw 2vw 0 0;
       }
-      span:last-child {
-        text-align: right;
+
+      @include lib.media-breakpoint-gte('2k') {
+        gap: 0.125vw;
+        padding: 0.75vw 1vw;
+        border-radius: 1vw 1vw 0 0;
       }
-      &.subtitle {
-        width: 98%;
+
+      background-color: lib.$color_gray_1;
+
+      .title-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
         color: lib.$color_gray_3;
+
         span {
-          font-weight: normal;
-          font-style: italic;
-          @include lib.bpProp('font-size', 4vw);
-          &:last-child {
-            text-align: right;
+          font-family: 'Source Sans Pro';
+        }
+
+        span:last-child {
+          text-align: right;
+        }
+
+        &.subtitle {
+          width: 98%;
+          color: lib.$color_gray_3;
+
+          span {
+            font-weight: normal;
+            font-style: italic;
+            @include lib.bpProp('font-size', 4vw);
+
+            &:last-child {
+              text-align: right;
+            }
           }
         }
       }
     }
+
+    .content-container {
+      margin-bottom: 4vw;
+      @extend %pagePadding;
+
+      .highlight {
+        font-weight: bold;
+      }
+
+      background-color: lib.$color_white;
+
+
+      img {
+        @include lib.floatRight();
+
+        &.mike-vondrak {
+          @include lib.floatLeft();
+          width: 30%;
+        }
+
+        &.sbsco {
+          width: 30%;
+        }
+
+        &.pointing-poker {
+          @include lib.floatLeft();
+          width: 60%;
+        }
+
+        &.dayna-safferstein {
+          width: 50%;
+        }
+      }
+      &.technology {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2vw;
+        width: 90%;
+        margin-left: 5%;
+        @extend %pagePadding;
+    
+        span {
+          @include lib.bpProp("font-size", 2.5vw);
+        }
+    
+        span:first-of-type {
+          font-weight: bold;
+        }
+      }
+    }
   }
-  .content-container {
-    background-color: lib.$color_white;
-  }
-}
+
+  
